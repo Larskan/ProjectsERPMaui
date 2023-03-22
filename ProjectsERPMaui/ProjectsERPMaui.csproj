@@ -53,7 +53,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Test\" />
+	  <Folder Include="Model\" />
+	  <Folder Include="ViewModel\" />
+	  <Folder Include="View\" />
 	</ItemGroup>
 
 </Project>
