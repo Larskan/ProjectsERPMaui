@@ -6,15 +6,27 @@
     xmlns:local="clr-namespace:ProjectsERPMaui.View"
     Shell.FlyoutBehavior="Disabled">
 
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={StaticResource Primary}, Default=White}" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Dark={StaticResource DarkBackground}, Light={StaticResource LightBackground}}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Dark={StaticResource LightBackground}, Light={StaticResource DarkBackground}}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
+                <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Dark={StaticResource LightBackground}, Light={StaticResource DarkBackground}}" />
+            </Style>
+            <Style BasedOn="{StaticResource BaseStyle}" TargetType="ShellItem" ApplyToDerivedTypes="True" />
+        </ResourceDictionary>
+    </Shell.Resources>
     <TabBar>
-
         <ShellContent x:Name="Logout" Title="Logout" Icon="logout.png" ContentTemplate="{DataTemplate local:LoginView}" />
-
-        
-            <ShellContent x:Name="Start" Title="Start" Icon="home.png" ContentTemplate="{DataTemplate local:StartView}" IsVisible="True"/>
-            <ShellContent x:Name="Project" Title="Project" Icon="blueprint.png" ContentTemplate="{DataTemplate local:ProjectView}"/>
-            <ShellContent x:Name="Task" Title="Task" Icon="checklist.png" ContentTemplate="{DataTemplate local:TaskView}" />
-        
+        <ShellContent x:Name="Start" Title="Start" Icon="home.png" ContentTemplate="{DataTemplate local:StartView}"/>
+        <ShellContent x:Name="Project" Title="Project" Icon="blueprint.png" ContentTemplate="{DataTemplate local:ProjectView}"/>
+        <ShellContent x:Name="Task" Title="Task" Icon="checklist.png" ContentTemplate="{DataTemplate local:TaskView}" />
     </TabBar>
 
 </Shell>
