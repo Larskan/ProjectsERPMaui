@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectsERPMaui.View.LoginView"
+             xmlns:viewModel="clr-namespace:ProjectsERPMaui.ViewModel"
+             x:DataType="viewModel:LoginViewModel"
+             xmlns:model="clr-namespace:ProjectsERPMaui.Model"
+             Title="LoginView">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome Login Page"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Button Text="Login" Command="{Binding GoToStartPageCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>
