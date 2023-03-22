@@ -5,12 +5,13 @@
              xmlns:viewModel="clr-namespace:ProjectsERPMaui.ViewModel"
              x:DataType="viewModel:StartViewModel"
              xmlns:model="clr-namespace:ProjectsERPMaui.Model"
-             Title="StartView">
+             Title="Start Page"
+             Shell.NavBarIsVisible="True">
     <VerticalStackLayout>
         <Label 
             Text="Welcome to Start Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button Style="{StaticResource ButtonOutline}" Text="Go to project" Command="{Binding GoToProjectPageCommand}"/>
+        <!--<Button Style="{StaticResource ButtonOutline}" Text="Go to project" Command="{Binding GoToProjectPageCommand}"/>-->
     </VerticalStackLayout>
 </ContentPage>

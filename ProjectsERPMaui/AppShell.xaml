@@ -6,9 +6,15 @@
     xmlns:local="clr-namespace:ProjectsERPMaui.View"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:LoginView}"
-        Route="MainPage" />
+    <TabBar>
+
+        <ShellContent x:Name="Logout" Title="Logout" Icon="logout.png" ContentTemplate="{DataTemplate local:LoginView}" />
+
+        
+            <ShellContent x:Name="Start" Title="Start" Icon="home.png" ContentTemplate="{DataTemplate local:StartView}" IsVisible="True"/>
+            <ShellContent x:Name="Project" Title="Project" Icon="blueprint.png" ContentTemplate="{DataTemplate local:ProjectView}"/>
+            <ShellContent x:Name="Task" Title="Task" Icon="checklist.png" ContentTemplate="{DataTemplate local:TaskView}" />
+        
+    </TabBar>
 
 </Shell>

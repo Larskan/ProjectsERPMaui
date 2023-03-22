@@ -5,12 +5,14 @@
              xmlns:viewModel="clr-namespace:ProjectsERPMaui.ViewModel"
              x:DataType="viewModel:LoginViewModel"
              xmlns:model="clr-namespace:ProjectsERPMaui.Model"
-             Title="LoginView">
+             Title="Login Page">
+
     <VerticalStackLayout>
         <Label 
             Text="Welcome Login Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button Style="{StaticResource ButtonOutline}" Text="Login" Command="{Binding GoToStartPageCommand}"/>
+        <!--<Button Style="{StaticResource ButtonOutline}" Text="Login" Command="{Binding GoToStartPageCommand}"/>-->
     </VerticalStackLayout>
+
 </ContentPage>

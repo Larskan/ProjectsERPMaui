@@ -5,7 +5,8 @@
              xmlns:viewModel="clr-namespace:ProjectsERPMaui.ViewModel"
              x:DataType="viewModel:ProjectViewModel"
              xmlns:model="clr-namespace:ProjectsERPMaui.Model"
-             Title="ProjectView">
+             Title="Project Page"
+             Shell.NavBarIsVisible="True">
     <VerticalStackLayout>
         <Label 
             Text="Welcome to Project Page"
