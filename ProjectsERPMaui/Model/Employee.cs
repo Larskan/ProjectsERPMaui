@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectsERPMaui.Model
 {
-    internal class Empoyee
+    internal class Employee
     {
     }
 }
