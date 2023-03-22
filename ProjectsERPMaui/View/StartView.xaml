@@ -11,6 +11,6 @@
             Text="Welcome to Start Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button Text="Go to project" Command="{Binding GoToProjectPageCommand}"/>
+        <Button Style="{StaticResource ButtonOutline}" Text="Go to project" Command="{Binding GoToProjectPageCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

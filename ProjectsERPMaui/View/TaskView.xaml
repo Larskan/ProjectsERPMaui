@@ -11,6 +11,6 @@
             Text="Welcome to Task Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button Text="Go to Login" Command="{Binding GoToLoginPageCommand}"/>
+        <Button Style="{StaticResource ButtonOutline}" Text="Go to Login" Command="{Binding GoToLoginPageCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -11,6 +11,6 @@
             Text="Welcome Login Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button Text="Login" Command="{Binding GoToStartPageCommand}"/>
+        <Button Style="{StaticResource ButtonOutline}" Text="Login" Command="{Binding GoToStartPageCommand}"/>
     </VerticalStackLayout>
 </ContentPage>
