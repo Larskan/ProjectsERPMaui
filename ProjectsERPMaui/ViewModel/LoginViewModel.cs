@@ -15,7 +15,7 @@ namespace ProjectsERPMaui.ViewModel
         ObservableCollection<Employee> employees { get; set; } = new ObservableCollection<Employee>();
 
         [ObservableProperty]
-        private string _usernameCheck;
+        public string _usernameCheck;
 
         [ObservableProperty]
         public string _passwordCheck;
@@ -24,12 +24,12 @@ namespace ProjectsERPMaui.ViewModel
         public string _messageText;
 
         [ObservableProperty]
-        public Employee _employee;
+        public Employee _emp;
         public LoginViewModel()
         {
             //Get all Employees from Dynamics
-
-            _employee = new Employee()
+            
+            _emp = new Employee()
             {
                 EmpID = 1,
                 Name = "Hans",
@@ -47,7 +47,7 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-                if (PasswordCheck == Employee.Password && UsernameCheck == Employee.Username)
+                if (PasswordCheck == Emp.Password && UsernameCheck == Emp.Username)
                 {
                     GoToStartPage();
                     MessageText = "";
