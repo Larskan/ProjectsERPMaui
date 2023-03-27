@@ -11,8 +11,9 @@ namespace ProjectsERPMaui.Model
         public int ProjectTaskID { get; set; }
         public int ProjectID { get; set; }
         public string TaskName { get; set; }
-        public int TimeUsed { get; set; }
-        public int PlanTime { get; set; }
+        public double TimeUsed { get; set; }
+        public double PlanTime { get; set; }
+        public string Disception { get; set; }
 
     }
 }

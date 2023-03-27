@@ -10,7 +10,7 @@ namespace ProjectsERPMaui.Model
     {
         public int ProjectID { get; set; }
         public string ProjectName { get; set; }
-        public int TotalTime { get; set; }
-        public int RemainingTime { get; set; }
+        public double TotalTime { get; set; }
+        public double RemainingTime { get; set; }
     }
 }
