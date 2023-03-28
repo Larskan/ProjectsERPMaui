@@ -8,7 +8,7 @@
              Title="LoginView">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome Login Page"
+            Text="Welcome to Login Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Button Text="Login" Command="{Binding GoToStartPageCommand}"/>
