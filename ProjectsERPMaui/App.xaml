@@ -32,6 +32,7 @@
                 <Setter Property="FontFamily" Value="OpenSansRegular" />
                 <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LabelText}, Dark={StaticResource LabelTextDark}}" />
             </Style>
+            
             <Style x:Key="ButtonOutline" TargetType="Button">
                 <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}" />
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />

@@ -21,9 +21,9 @@
 
         <Label Text="{Binding MessageText}"></Label>
 
-        <Frame  CornerRadius="50" Padding="1" BackgroundColor="DarkBlue">
-            <Button Text="Login" Command="{Binding LoginCheckCommand}"></Button>
-        </Frame>
+
+        <Button Text="Login" Command="{Binding LoginCheckCommand}" Style="{StaticResource ButtonOutline}"></Button>
+       
         <!--<Button Style="{StaticResource ButtonOutline}" Text="Login" Command="{Binding GoToStartPageCommand}"/>-->
     </VerticalStackLayout>
 

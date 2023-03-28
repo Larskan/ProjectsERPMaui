@@ -16,9 +16,6 @@ namespace ProjectsERPMaui.ViewModel
     public partial class ProjectViewModel : ObservableObject
     {
         public ObservableCollection<Project> Projects { get; } = new ObservableCollection<Project>();
-        
-        DynamicsService dynamicsService;
-        IConnectivity connectivity;
 
         public ProjectViewModel() 
         {
@@ -42,42 +39,7 @@ namespace ProjectsERPMaui.ViewModel
         [RelayCommand]
         public async void GoToTaskPage()
         {
-            await Shell.Current.GoToAsync(nameof(View.TaskView));
-        }
-
-        [RelayCommand]
-        async Task GetProjectsAsync()
-        {
-
-            try
-            {
-                if (connectivity.NetworkAccess != NetworkAccess.Internet)
-                {
-                    await Shell.Current.DisplayAlert("No connectivity!",
-                        $"Please check internet and try again.", "OK");
-                    return;
-                }
-
-                var projects = await dynamicsService.GetProject();
-
-                if (Projects.Count != 0)
-                    Projects.Clear();
-
-                foreach (var project in projects)
-                    Projects.Add(project);
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Unable to get monkeys: {ex.Message}");
-                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
-            }
-            finally
-            {
-                //IsBusy = false;
-                //IsRefreshing = false;
-            }
-
+            await Shell.Current.GoToAsync("//Task");
         }
     }
 }
