@@ -5,12 +5,26 @@
              xmlns:viewModel="clr-namespace:ProjectsERPMaui.ViewModel"
              x:DataType="viewModel:LoginViewModel"
              xmlns:model="clr-namespace:ProjectsERPMaui.Model"
-             Title="LoginView">
-    <VerticalStackLayout>
+             Title="Login Page">
+
+    <VerticalStackLayout VerticalOptions="CenterAndExpand" Padding="50" Spacing="20">
         <Label 
             Text="Welcome to Login Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button Text="Login" Command="{Binding GoToStartPageCommand}"/>
+        <Frame  CornerRadius="40" Padding="1" BackgroundColor="DarkGray">
+            <Entry Text="{Binding UsernameCheck}" TextColor="WhiteSmoke" HorizontalTextAlignment="Center" BackgroundColor="DarkGray" FontSize="18"></Entry>
+        </Frame>
+        <Frame  CornerRadius="50" Padding="1" BackgroundColor="DarkGray">
+            <Entry Text="{Binding PasswordCheck}" TextColor="WhiteSmoke" HorizontalTextAlignment="Center" BackgroundColor="DarkGray" FontSize="18" IsPassword="True"></Entry>
+        </Frame>
+
+        <Label Text="{Binding MessageText}"></Label>
+
+        <Frame  CornerRadius="50" Padding="1" BackgroundColor="DarkBlue">
+            <Button Text="Login" Command="{Binding LoginCheckCommand}"></Button>
+        </Frame>
+        <!--<Button Style="{StaticResource ButtonOutline}" Text="Login" Command="{Binding GoToStartPageCommand}"/>-->
     </VerticalStackLayout>
+
 </ContentPage>

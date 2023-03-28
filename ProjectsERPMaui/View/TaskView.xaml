@@ -5,12 +5,13 @@
              xmlns:viwModel="clr-namespace:ProjectsERPMaui.ViewModel"
              x:DataType="viwModel:TaskViewModel"
              xmlns:model="clr-namespace:ProjectsERPMaui.Model"
-             Title="TaskView">
+             Title="Task Page"
+             Shell.NavBarIsVisible="True">
     <VerticalStackLayout>
         <Label 
             Text="Welcome to Task Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button Text="Go to Login" Command="{Binding GoToLoginPageCommand}"/>
+        <!--<Button Style="{StaticResource ButtonOutline}" Text="Go to Login" Command="{Binding GoToLoginPageCommand}"/>-->
     </VerticalStackLayout>
 </ContentPage>
