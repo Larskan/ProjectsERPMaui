@@ -14,9 +14,11 @@ namespace ProjectsERPMaui.ViewModel
 {
     public partial class LoginViewModel :ObservableObject
     {
-        ObservableCollection<Employee> employees { get; set; } = new ObservableCollection<Employee>();
-        ObservableCollection<Project> Projects { get; } = new ObservableCollection<Project>();
-        ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
+        //ObservableCollection<Employee> employees { get; set; } = new ObservableCollection<Employee>();
+        //ObservableCollection<Project> Projects { get; } = new ObservableCollection<Project>();
+        //ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
+
+        DynamicsService dynamicsService;
 
         [ObservableProperty]
         public string _usernameCheck;
@@ -31,34 +33,8 @@ namespace ProjectsERPMaui.ViewModel
         public Employee _emp;
         public LoginViewModel()
         {
-            //Get all Employees from Dynamics
-            
-            _emp = new Employee()
-            {
-                EmpID = 1,
-                Name = "Hans",
-                Lastname = "Petersen",
-                Email = "HansPetersen@Mail.com",
-                Username = "HP",
-                Password = "password",
-            };
-
-            Projects.Add(new Project()
-            {
-                ProjectName = "Test1",
-                ProjectID = 1,
-                TotalTime = 100,
-                RemainingTime = 100,
-            });
-
-            Projects.Add(new Project()
-            {
-                ProjectName = "Test2",
-                ProjectID = 2,
-                TotalTime = 80,
-                RemainingTime = 60,
-            });
-
+            _emp = new Employee();
+            dynamicsService = new DynamicsService();
         }
 
         [RelayCommand]
@@ -66,7 +42,9 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-                if (PasswordCheck == Emp.Password && UsernameCheck == Emp.Username)
+                Emp = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
+                await Shell.Current.DisplayAlert("Employee = ","lastname "+Emp.LastName+" name "+Emp.FirstName, "ok");
+                if (Emp.Boolean)
                 {
                     GoToStartPage();
                     MessageText = "";
@@ -88,41 +66,41 @@ namespace ProjectsERPMaui.ViewModel
         }
 
 
-        DynamicsService dynamicsService;
-        IConnectivity connectivity;
 
-        async Task GetProjectsAsync()
-        {
+        //IConnectivity connectivity;
 
-            try
-            {
-                if (connectivity.NetworkAccess != NetworkAccess.Internet)
-                {
-                    await Shell.Current.DisplayAlert("No connectivity!",
-                        $"Please check internet and try again.", "OK");
-                    return;
-                }
+        //async Task GetProjectsAsync()
+        //{
 
-                var projects = await dynamicsService.GetProject();
+        //    try
+        //    {
+        //        if (connectivity.NetworkAccess != NetworkAccess.Internet)
+        //        {
+        //            await Shell.Current.DisplayAlert("No connectivity!",
+        //                $"Please check internet and try again.", "OK");
+        //            return;
+        //        }
 
-                if (Projects.Count != 0)
-                    Projects.Clear();
+        //        var projects = await dynamicsService.GetProject();
 
-                foreach (var project in projects)
-                    Projects.Add(project);
+        //        if (Projects.Count != 0)
+        //            Projects.Clear();
 
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Unable to get Projects: {ex.Message}");
-                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
-            }
-            finally
-            {
-                //IsBusy = false;
-                //IsRefreshing = false;
-            }
+        //        foreach (var project in projects)
+        //            Projects.Add(project);
 
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine($"Unable to get Projects: {ex.Message}");
+        //        await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+        //    }
+        //    finally
+        //    {
+        //        //IsBusy = false;
+        //        //IsRefreshing = false;
+        //    }
+
+        //}
     }
 }

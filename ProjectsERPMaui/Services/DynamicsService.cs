@@ -3,8 +3,11 @@ using ProjectsERPMaui.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ProjectsERPMaui.Services
@@ -12,30 +15,50 @@ namespace ProjectsERPMaui.Services
     class DynamicsService
     {
         HttpClient httpClient;
+
+        string IpAd = "http://172.18.220.197:7048/BC/ODataV4/GetReq_Login?company=CRONUS%20Danmark%20A%2FS";
+
         public DynamicsService()
         {
             this.httpClient = new HttpClient();
         }
 
-        List<Project> projectList;
-        public async Task<List<Project>> GetProject()
+        Employee employee;
+        public async Task<Employee> GetEmployee(string username, string password)
         {
-            if (projectList?.Count > 0)
-                return projectList;
+            employee = new Employee();
 
-            // Online
-            var response = await httpClient.GetAsync("http adress to dynamics");
+            var _token = $"admin:Password";
+            var _tokenBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(_token));
+
+            httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _tokenBase64);
+
+            //Sending a string as a Json
+            String jsonData = "{\"username\": \"" + username +
+                                "\", \"password\": \"" + password + "\" }";
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+
+            HttpResponseMessage response = await httpClient.PostAsync(IpAd, content);
+
+            string data = "";
+
             if (response.IsSuccessStatusCode)
-            {
-                projectList = await response.Content.ReadFromJsonAsync<List<Project>>();
+            {              
+                //converting the string to a Json and than serialize it ad create the employee
+                data = await response.Content.ReadAsStringAsync();
+                employee = JsonSerializer.Deserialize<Employee>(data);
+
             }
-            // Offline
-            /*using var stream = await FileSystem.OpenAppPackageFileAsync("monkeydata.json");
-            using var reader = new StreamReader(stream);
-            var contents = await reader.ReadToEndAsync();
-            monkeyList = JsonSerializer.Deserialize<List<Monkey>>(contents);
-            */
-            return projectList;
+            else
+            {
+                await Shell.Current.DisplayAlert("Error: ","somthing went wrong", "OK") ;
+            }
+
+
+            return employee;
         }
     }
 }
