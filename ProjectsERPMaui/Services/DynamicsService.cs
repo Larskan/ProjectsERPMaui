@@ -16,6 +16,7 @@ namespace ProjectsERPMaui.Services
     {
         HttpClient httpClient;
 
+        // change her to your ip
         string IpAd = "http://172.19.162.187:7048/BC/ODataV4/GetReq_Login?company=CRONUS%20Danmark%20A%2FS";
 
         public DynamicsService()
