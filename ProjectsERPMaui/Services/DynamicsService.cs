@@ -17,7 +17,7 @@ namespace ProjectsERPMaui.Services
         HttpClient httpClient;
 
         // change her to your ip
-        string IpAd = "http://172.19.162.187:7048/BC/ODataV4/GetReq_Login?company=CRONUS%20Danmark%20A%2FS";
+        string IpAd = "http://172.28.126.160:7048/BC/ODataV4/ERPWebGet_Login?Company=CRONUS%20Danmark%20A%2FS";
 
         public DynamicsService()
         {
@@ -29,7 +29,7 @@ namespace ProjectsERPMaui.Services
         {
             employee = new Employee();
 
-            var _token = $"admin:Password";
+            var _token = $"Admin:Pass";
             var _tokenBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(_token));
 
             httpClient.DefaultRequestHeaders.Accept.Add(
@@ -50,7 +50,8 @@ namespace ProjectsERPMaui.Services
             {              
                 //converting the string to a Json and than serialize it ad create the employee
                 data = await response.Content.ReadAsStringAsync();
-                employee = JsonSerializer.Deserialize<Employee>(data);
+                ERPJsonConverterClass Json = JsonSerializer.Deserialize<ERPJsonConverterClass>(data);
+                employee = JsonSerializer.Deserialize<Employee>(Json.value);
 
             }
             else
