@@ -8,10 +8,10 @@
              Title="Start Page"
              Shell.NavBarIsVisible="True">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to Start Page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Style="{StaticResource BaseLabel}" Text="{Binding Employee.FirstName}"/>
+        <Label Style="{StaticResource BaseLabel}" Text="{Binding Employee.FirstName}"/>
+        <Label Style="{StaticResource BaseLabel}" Text="Time:"/>
+        <Label Style="{StaticResource BaseLabel}" Text="Used Time:"/>
         <!--<Button Style="{StaticResource ButtonOutline}" Text="Go to project" Command="{Binding GoToProjectPageCommand}"/>-->
     </VerticalStackLayout>
 </ContentPage>

@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 using ProjectsERPMaui.Model;
 using ProjectsERPMaui.Services;
 using System.Diagnostics;
+using CommunityToolkit.Mvvm.Messaging;
+using ProjectsERPMaui.Messages;
 
 namespace ProjectsERPMaui.ViewModel
 {
+    [QueryProperty(nameof(Employee), nameof(Employee))]
     public partial class LoginViewModel :ObservableObject
     {
         //ObservableCollection<Employee> employees { get; set; } = new ObservableCollection<Employee>();
@@ -30,10 +33,10 @@ namespace ProjectsERPMaui.ViewModel
         public string _messageText;
 
         [ObservableProperty]
-        public Employee _emp;
+        public Employee _employee;
         public LoginViewModel()
         {
-            _emp = new Employee();
+            _employee= new Employee{EmpID = 1 ,FirstName = "Hans", LastName = "Hansen", Boolean = true};
             dynamicsService = new DynamicsService();
         }
 
@@ -42,11 +45,11 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-                Emp = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
-                await Shell.Current.DisplayAlert("Employee = ","lastname "+Emp.LastName+" name "+Emp.FirstName, "ok");
-                if (Emp.Boolean)
+                //Emp = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
+                //await Shell.Current.DisplayAlert("Employee = ","lastname "+Emp.LastName+" name "+Emp.FirstName, "ok");
+                if (Employee.Boolean)
                 {
-                    GoToStartPage();
+                    await GoToStartPage();
                     MessageText = "";
                 }
                 else
@@ -60,12 +63,20 @@ namespace ProjectsERPMaui.ViewModel
             }
         }
 
-        public async void GoToStartPage()
+        async Task GoToStartPage()
         {
-            await Shell.Current.GoToAsync("//Start");          
+            await Shell.Current.GoToAsync($"//Start",true,
+                new Dictionary<string, object>
+                {
+                    ["Employee"] = Employee
+                });
         }
 
 
+        //async Task SendEmployee()
+        //{
+        //    WeakReferenceMessenger.Default.Send(new SendEmployeeInfo(Emp));
+        //}
 
         //IConnectivity connectivity;
 
