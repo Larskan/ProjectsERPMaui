@@ -14,8 +14,10 @@ using System.Threading.Tasks;
 
 namespace ProjectsERPMaui.ViewModel
 {
+    [QueryProperty(nameof(Employee), nameof(Employee))]
     public partial class StartViewModel : ObservableObject
     {
+<<<<<<< HEAD
         ObservableCollection<Project> Projects { get; } = new ObservableCollection<Project>();
         ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
 
@@ -23,6 +25,50 @@ namespace ProjectsERPMaui.ViewModel
         public Employee _emp;
 
         public StartViewModel() 
+=======
+        //ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
+        ObservableCollection<Project> Projects { get; set; } = new ObservableCollection<Project>();
+
+        DynamicsService dynamicsService;
+
+        [ObservableProperty]
+        public Project _project;
+
+        [ObservableProperty]
+        public Employee _employee;
+
+        public StartViewModel()
+        {
+            Employee = new Employee();
+            Testdata();
+            dynamicsService = new DynamicsService();
+        }
+
+        [RelayCommand]
+        public async void GetProjects()
+        {
+            try
+            {
+                //Project = await dynamicsService.GetProjects(Empl.EmpID);
+                await GoToProjectPage();
+            }
+            catch (Exception ex)
+            {
+                await Console.Out.WriteLineAsync(ex.Message);
+            }
+
+        }
+        async Task GoToProjectPage()
+        {
+            await Shell.Current.GoToAsync($"//Project",
+                new Dictionary<string, object>
+                {
+                    ["Projects"] = Projects
+                });
+        }
+
+        private void Testdata()
+>>>>>>> 6807885ae19d1dbe1846aa3509d4314567bab109
         {
 
             Projects.Add(new Project()
@@ -32,6 +78,7 @@ namespace ProjectsERPMaui.ViewModel
                 TotalTime = 100,
                 RemainingTime = 100,
             });
+<<<<<<< HEAD
 
             Projects.Add(new Project()
             {
@@ -76,6 +123,29 @@ namespace ProjectsERPMaui.ViewModel
                 //IsBusy = false;
                 //IsRefreshing = false;
             }
+=======
+            Projects.Add(new Project()
+            {
+                ProjectName = "Test2",
+                ProjectID = 1,
+                TotalTime = 100,
+                RemainingTime = 100,
+            });
+            Projects.Add(new Project()
+            {
+                ProjectName = "Test3",
+                ProjectID = 1,
+                TotalTime = 100,
+                RemainingTime = 100,
+            });
+            Projects.Add(new Project()
+            {
+                ProjectName = "Test4",
+                ProjectID = 1,
+                TotalTime = 100,
+                RemainingTime = 100,
+            });
+>>>>>>> 6807885ae19d1dbe1846aa3509d4314567bab109
 
         }
     }
