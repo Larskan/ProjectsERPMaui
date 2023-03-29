@@ -36,7 +36,7 @@ namespace ProjectsERPMaui.ViewModel
         public Employee _employee;
         public LoginViewModel()
         {
-            _employee= new Employee{EmpID = 1 ,FirstName = "Hans", LastName = "Hansen", Boolean = true};
+            _employee= new Employee();
             dynamicsService = new DynamicsService();
         }
 
@@ -45,8 +45,8 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-                //Emp = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
-                //await Shell.Current.DisplayAlert("Employee = ","lastname "+Emp.LastName+" name "+Emp.FirstName, "ok");
+                Employee = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
+                await Shell.Current.DisplayAlert("Employee = ", "lastname " + Employee.LastName + " name " + Employee.FirstName, "ok");
                 if (Employee.Boolean)
                 {
                     await GoToStartPage();
