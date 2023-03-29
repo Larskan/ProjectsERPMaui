@@ -20,7 +20,6 @@ namespace ProjectsERPMaui.ViewModel
         //ObservableCollection<Employee> employees { get; set; } = new ObservableCollection<Employee>();
         //ObservableCollection<Project> Projects { get; } = new ObservableCollection<Project>();
         //ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
-        IConnectivity connectivity;
         DynamicsService dynamicsService;
 
         [ObservableProperty]
