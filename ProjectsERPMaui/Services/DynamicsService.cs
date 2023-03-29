@@ -34,6 +34,7 @@ namespace ProjectsERPMaui.Services
 
             httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
+
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _tokenBase64);
 
             //Sending a string as a Json
@@ -41,13 +42,12 @@ namespace ProjectsERPMaui.Services
                                 "\", \"password\": \"" + password + "\" }";
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-
             HttpResponseMessage response = await httpClient.PostAsync(IpAd, content);
 
             string data = "";
 
             if (response.IsSuccessStatusCode)
-            {              
+            {
                 //converting the string to a Json and than serialize it ad create the employee
                 data = await response.Content.ReadAsStringAsync();
                 ERPJsonConverterClass Json = JsonSerializer.Deserialize<ERPJsonConverterClass>(data);
@@ -56,11 +56,11 @@ namespace ProjectsERPMaui.Services
             }
             else
             {
-                await Shell.Current.DisplayAlert("Error: ","somthing went wrong", "OK") ;
+                await Shell.Current.DisplayAlert("Error: ", "somthing went wrong", "OK");
             }
 
-
             return employee;
+
         }
     }
 }

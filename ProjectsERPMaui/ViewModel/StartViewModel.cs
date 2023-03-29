@@ -14,9 +14,16 @@ using System.Threading.Tasks;
 
 namespace ProjectsERPMaui.ViewModel
 {
+    [QueryProperty(nameof(Employee), nameof(Employee))]
     public partial class StartViewModel : ObservableObject
     {
+        [ObservableProperty]
+        public Employee _employee;
 
+        public StartViewModel()
+        {
+            Employee = new Employee();
+        }
 
     }
 }
