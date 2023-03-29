@@ -9,9 +9,9 @@
              Shell.NavBarIsVisible="True">
     <VerticalStackLayout>
         <Label Style="{StaticResource BaseLabel}" Text="{Binding Employee.FirstName}"/>
-        <Label Style="{StaticResource BaseLabel}" Text="{Binding Employee.FirstName}"/>
-        <Label Style="{StaticResource BaseLabel}" Text="Time:"/>
-        <Label Style="{StaticResource BaseLabel}" Text="Used Time:"/>
+        <Label Style="{StaticResource BaseLabel}" Text="{Binding Employee.LastName}"/>
+        <Label Style="{StaticResource BaseLabel}" Text="{Binding Employee.EmpID}"/>
+        <Label Style="{StaticResource BaseLabel}" Text="{Binding Employee.Boolean}"/>
         <!--<Button Style="{StaticResource ButtonOutline}" Text="Go to project" Command="{Binding GoToProjectPageCommand}"/>-->
     </VerticalStackLayout>
 </ContentPage>

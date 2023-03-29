@@ -20,7 +20,7 @@ namespace ProjectsERPMaui.ViewModel
         //ObservableCollection<Employee> employees { get; set; } = new ObservableCollection<Employee>();
         //ObservableCollection<Project> Projects { get; } = new ObservableCollection<Project>();
         //ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
-
+        IConnectivity connectivity;
         DynamicsService dynamicsService;
 
         [ObservableProperty]
@@ -45,6 +45,7 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
+
                 Employee = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
                 await Shell.Current.DisplayAlert("Employee = ", "lastname " + Employee.LastName + " name " + Employee.FirstName, "ok");
                 if (Employee.Boolean)
