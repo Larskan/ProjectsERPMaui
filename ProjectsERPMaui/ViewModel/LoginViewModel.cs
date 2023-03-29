@@ -14,9 +14,7 @@ namespace ProjectsERPMaui.ViewModel
 {
     public partial class LoginViewModel :ObservableObject
     {
-        ObservableCollection<Employee> employees { get; set; } = new ObservableCollection<Employee>();
-        ObservableCollection<Project> Projects { get; } = new ObservableCollection<Project>();
-        ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
+        DynamicsService dynamicsService;
 
         [ObservableProperty]
         public string _usernameCheck;
@@ -33,32 +31,13 @@ namespace ProjectsERPMaui.ViewModel
         {
             //Get all Employees from Dynamics
             
-            _emp = new Employee()
-            {
-                EmpID = 1,
-                Name = "Hans",
-                Lastname = "Petersen",
-                Email = "HansPetersen@Mail.com",
-                Username = "HP",
-                Password = "password",
-            };
-
-            Projects.Add(new Project()
-            {
-                ProjectName = "Test1",
-                ProjectID = 1,
-                TotalTime = 100,
-                RemainingTime = 100,
-            });
-
-            Projects.Add(new Project()
-            {
-                ProjectName = "Test2",
-                ProjectID = 2,
-                TotalTime = 80,
-                RemainingTime = 60,
-            });
-
+            //_emp = new Employee()
+            //{
+            //    EmpID = 1,
+            //    Firstname = "Hans",
+            //    Lastname = "Petersen",
+            //    Boolean = true,
+            //};
         }
 
         [RelayCommand]
@@ -66,8 +45,11 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-                if (PasswordCheck == Emp.Password && UsernameCheck == Emp.Username)
+                Emp = await dynamicsService.GetEmployee(UsernameCheck,PasswordCheck);
+
+                if (Emp.Boolean)
                 {
+                    MessagingCenter.Send<LoginViewModel, Employee>(this, MessengerKeys.GetEmpl, Emp);
                     GoToStartPage();
                     MessageText = "";
                 }
@@ -85,44 +67,6 @@ namespace ProjectsERPMaui.ViewModel
         public async void GoToStartPage()
         {
             await Shell.Current.GoToAsync("//Start");          
-        }
-
-
-        DynamicsService dynamicsService;
-        IConnectivity connectivity;
-
-        async Task GetProjectsAsync()
-        {
-
-            try
-            {
-                if (connectivity.NetworkAccess != NetworkAccess.Internet)
-                {
-                    await Shell.Current.DisplayAlert("No connectivity!",
-                        $"Please check internet and try again.", "OK");
-                    return;
-                }
-
-                var projects = await dynamicsService.GetProject();
-
-                if (Projects.Count != 0)
-                    Projects.Clear();
-
-                foreach (var project in projects)
-                    Projects.Add(project);
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Unable to get Projects: {ex.Message}");
-                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
-            }
-            finally
-            {
-                //IsBusy = false;
-                //IsRefreshing = false;
-            }
-
         }
     }
 }
