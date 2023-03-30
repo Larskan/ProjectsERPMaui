@@ -32,7 +32,7 @@ namespace ProjectsERPMaui.ViewModel
         [RelayCommand]
         async void GoToTaskPage(Project project)
         {
-            await Shell.Current.GoToAsync("//Task", true,new Dictionary<string, object>{
+            await Shell.Current.GoToAsync("//Task",new Dictionary<string, object>{
                 ["Project"] = project
             });
         }
