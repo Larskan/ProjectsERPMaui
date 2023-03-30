@@ -35,7 +35,7 @@ namespace ProjectsERPMaui.ViewModel
         {
             Empl = new Employee();
             dynamicsService = new DynamicsService();
-            _projectsList = new List<Project>();
+            ProjectsList = new List<Project>();
             Testdata();
         }
 
