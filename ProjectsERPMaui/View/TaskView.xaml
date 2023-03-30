@@ -10,7 +10,7 @@
     <Grid
         ColumnDefinitions="*,Auto"
         ColumnSpacing="5"
-        RowDefinitions="100,*,Auto"
+        RowDefinitions="*,Auto"
         RowSpacing="0"
         BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
         <!--<Frame HeightRequest="125" Style="{StaticResource CardView}">
