@@ -31,7 +31,6 @@ namespace ProjectsERPMaui.ViewModel
         public StartViewModel()
         {
             Employee = new Employee();
-            Testdata();
             dynamicsService = new DynamicsService();
         }
 
@@ -65,29 +64,21 @@ namespace ProjectsERPMaui.ViewModel
             {
                 ProjectName = "Test1",
                 ProjectID = 1,
-                TotalTime = 100,
-                RemainingTime = 100,
             });
             Projects.Add(new Project()
             {
                 ProjectName = "Test2",
                 ProjectID = 1,
-                TotalTime = 100,
-                RemainingTime = 100,
             });
             Projects.Add(new Project()
             {
                 ProjectName = "Test3",
                 ProjectID = 1,
-                TotalTime = 100,
-                RemainingTime = 100,
             });
             Projects.Add(new Project()
             {
                 ProjectName = "Test4",
                 ProjectID = 1,
-                TotalTime = 100,
-                RemainingTime = 100,
             });
 
         }
