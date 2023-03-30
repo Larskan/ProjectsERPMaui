@@ -7,40 +7,6 @@
              xmlns:model="clr-namespace:ProjectsERPMaui.Model"
              Title="Start Page"
              Shell.NavBarIsVisible="True">
-<<<<<<< HEAD
-    
-    <Grid Padding="0" ColumnDefinitions="125,*,*">
-        <Image
-            Aspect="AspectFill"
-            HeightRequest="125"
-            Source="blueprint.png"
-            WidthRequest="125" />
-        <VerticalStackLayout
-            VerticalOptions="Center"
-            Grid.Column="1"
-            Padding="10">
-            <Label Style="{StaticResource BaseLabel}" Text="ID:"/>
-            <Label Style="{StaticResource BaseLabel}" Text="Firstname:"/>
-            <Label Style="{StaticResource BaseLabel}" Text="Lastname:"/>
-            <Label Style="{StaticResource BaseLabel}" Text="Booleaan:"/>
-        </VerticalStackLayout>
-        <VerticalStackLayout
-            VerticalOptions="Center"
-            Grid.Column="2"
-            Padding="10">
-            <Label Style="{StaticResource LargeLabel}" Text="{Binding Emp.EmpID}" />
-            <Label Style="{StaticResource MediumLabel}" Text="{Binding Emp.Firstname}" />
-            <Label Style="{StaticResource MediumLabel}" Text="{Binding Emp.Lastname}" />
-            <Label Style="{StaticResource MediumLabel}" Text="{Binding Emp.Boolean}" />
-        </VerticalStackLayout>
-        <ActivityIndicator
-                Grid.RowSpan="2"
-                Grid.ColumnSpan="2"
-                HorizontalOptions="Fill"
-                Color="{StaticResource Primary}"
-                VerticalOptions="Center" />
-    </Grid>
-=======
     <Frame Style="{StaticResource CardView}">
         <Grid Padding="0" ColumnDefinitions="75,*,*" RowDefinitions="300,250,*">
             <Image                       
@@ -82,5 +48,4 @@
             </VerticalStackLayout>
         </Grid>
     </Frame>
->>>>>>> 6807885ae19d1dbe1846aa3509d4314567bab109
 </ContentPage>

@@ -17,15 +17,6 @@ namespace ProjectsERPMaui.ViewModel
     [QueryProperty(nameof(Employee), nameof(Employee))]
     public partial class StartViewModel : ObservableObject
     {
-<<<<<<< HEAD
-        ObservableCollection<Project> Projects { get; } = new ObservableCollection<Project>();
-        ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
-
-        [ObservableProperty]
-        public Employee _emp;
-
-        public StartViewModel() 
-=======
         //ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
         ObservableCollection<Project> Projects { get; set; } = new ObservableCollection<Project>();
 
@@ -68,7 +59,6 @@ namespace ProjectsERPMaui.ViewModel
         }
 
         private void Testdata()
->>>>>>> 6807885ae19d1dbe1846aa3509d4314567bab109
         {
 
             Projects.Add(new Project()
@@ -78,52 +68,6 @@ namespace ProjectsERPMaui.ViewModel
                 TotalTime = 100,
                 RemainingTime = 100,
             });
-<<<<<<< HEAD
-
-            Projects.Add(new Project()
-            {
-                ProjectName = "Test2",
-                ProjectID = 2,
-                TotalTime = 80,
-                RemainingTime = 60,
-            });
-        }
-
-        DynamicsService dynamicsService;
-        IConnectivity connectivity;
-
-        async Task GetProjectsAsync()
-        {
-
-            try
-            {
-                if (connectivity.NetworkAccess != NetworkAccess.Internet)
-                {
-                    await Shell.Current.DisplayAlert("No connectivity!",
-                        $"Please check internet and try again.", "OK");
-                    return;
-                }
-
-                var projects = await dynamicsService.GetProject();
-
-                if (Projects.Count != 0)
-                    Projects.Clear();
-
-                foreach (var project in projects)
-                    Projects.Add(project);
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Unable to get Projects: {ex.Message}");
-                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
-            }
-            finally
-            {
-                //IsBusy = false;
-                //IsRefreshing = false;
-            }
-=======
             Projects.Add(new Project()
             {
                 ProjectName = "Test2",
@@ -145,7 +89,6 @@ namespace ProjectsERPMaui.ViewModel
                 TotalTime = 100,
                 RemainingTime = 100,
             });
->>>>>>> 6807885ae19d1dbe1846aa3509d4314567bab109
 
         }
     }

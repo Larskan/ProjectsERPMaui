@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Networking;
 using ProjectsERPMaui.Model;
 using ProjectsERPMaui.Services;
+using ProjectsERPMaui.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,9 +30,11 @@ namespace ProjectsERPMaui.ViewModel
         }
 
         [RelayCommand]
-        public async void GoToTaskPage()
+        async void GoToTaskPage(Project project)
         {
-            await Shell.Current.GoToAsync("//Task");
+            await Shell.Current.GoToAsync("//Task", true,new Dictionary<string, object>{
+                ["Project"] = project
+            });
         }
     }
 }
