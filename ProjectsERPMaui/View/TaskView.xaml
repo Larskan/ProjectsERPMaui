@@ -10,35 +10,34 @@
     <Grid
         ColumnDefinitions="*,Auto"
         ColumnSpacing="5"
-        RowDefinitions="100,Auto"
+        RowDefinitions="100,*,Auto"
         RowSpacing="0"
         BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
-        <Frame HeightRequest="125" Style="{StaticResource CardView}">
+        <!--<Frame HeightRequest="125" Style="{StaticResource CardView}">
             <Grid Padding="0" ColumnDefinitions="*" Grid.Row="0" Grid.ColumnSpan="3" >
                 <VerticalStackLayout
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Grid.Column="0"
                     Grid.ColumnSpan="3"
-                    Grid.Row="0"
                     Padding="10">
                     <Label Style="{StaticResource LargeLabel}" Text="{Binding Proj.ProjectName}" FontSize="20" FontAttributes="Bold" />
                 </VerticalStackLayout>
             </Grid>
-        </Frame>
-        <!--<RefreshView
+        </Frame>-->
+        <RefreshView
             Grid.ColumnSpan="3">
             <ContentView>
-                <CollectionView
+            <CollectionView
                         ItemsSource="{Binding ProjTaskList}"
                         SelectionMode="None">
-                    <CollectionView.EmptyView>
+                <CollectionView.EmptyView>
                         <StackLayout Padding="100">
                             <Image
                                     HorizontalOptions="Center"
                                     HeightRequest="160"
                                     WidthRequest="160"
-                                    Source="nodata.png"
+                                    Source="checklist.png"
                                     VerticalOptions="Center" />
                         </StackLayout>
                     </CollectionView.EmptyView>
@@ -46,7 +45,7 @@
                             <GridItemsLayout  Orientation="Horizontal" Span="3"/>
                         </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Project">
+                        <DataTemplate x:DataType="model:ProjectTask">
                             <Grid Padding="10" HorizontalOptions="Fill">
                                 <Frame HeightRequest="125" Style="{StaticResource CardView}">
                                     <Frame.GestureRecognizers>
@@ -73,8 +72,10 @@
                                                 VerticalOptions="Center"
                                                 Grid.Column="2"
                                                 Padding="10">
-                                            <Label Style="{StaticResource LargeLabel}" Text="{Binding }" />
-                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding }" />
+                                            <Label Style="{StaticResource LargeLabel}" Text="{Binding TaskName}" />
+                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding PlanTime}" />
+                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding TimeUsed}" />
+                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding Description}" />
                                         </VerticalStackLayout>
                                     </Grid>
                                 </Frame>
@@ -83,7 +84,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </ContentView>
-        </RefreshView>-->
+        </RefreshView>
         <ActivityIndicator
             Grid.RowSpan="2"
             Grid.ColumnSpan="2"

@@ -70,7 +70,7 @@ namespace ProjectsERPMaui.ViewModel
             {
                 ProjectName = "Test1",
                 ProjectID = 1,
-                TaskList = new List<ProjectTask> { new ProjectTask() { TaskName = "Task Test", PlanTime = 50, TimeUsed = 10, Description = "Hallo user", ProjectID = 1, TaskID = 1} }
+                TaskList = new List<ProjectTask> { new ProjectTask() { TaskName = "Task Test", PlanTime = 50, TimeUsed = 10, Description = "Hallo user", ProjectID = 1, TaskID = 1} },
             });
             ProjectsList.Add(new Project()
             {
