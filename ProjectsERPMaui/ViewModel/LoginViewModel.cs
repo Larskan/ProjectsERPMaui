@@ -31,20 +31,8 @@ namespace ProjectsERPMaui.ViewModel
         public Employee _employee;
         public LoginViewModel()
         {
-<<<<<<< HEAD
-            //Get all Employees from Dynamics
-            
-            //_emp = new Employee()
-            //{
-            //    EmpID = 1,
-            //    Firstname = "Hans",
-            //    Lastname = "Petersen",
-            //    Boolean = true,
-            //};
-=======
             Employee= new Employee { EmpID = 1, FirstName = "Peter", LastName = "Karlson", Boolean = true};
             dynamicsService = new DynamicsService();
->>>>>>> 6807885ae19d1dbe1846aa3509d4314567bab109
         }
 
         [RelayCommand]
@@ -52,21 +40,12 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-<<<<<<< HEAD
-                Emp = await dynamicsService.GetEmployee(UsernameCheck,PasswordCheck);
-
-                if (Emp.Boolean)
-                {
-                    MessagingCenter.Send<LoginViewModel, Employee>(this, MessengerKeys.GetEmpl, Emp);
-                    GoToStartPage();
-=======
 
                 //Employee = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
                 //await Shell.Current.DisplayAlert("Employee = ", "lastname " + Employee.LastName + " name " + Employee.FirstName, "ok");
                 if (Employee.Boolean)
                 {
                     await GoToStartPage();
->>>>>>> 6807885ae19d1dbe1846aa3509d4314567bab109
                     MessageText = "";
                 }
                 else
@@ -82,15 +61,11 @@ namespace ProjectsERPMaui.ViewModel
 
         async Task GoToStartPage()
         {
-<<<<<<< HEAD
-            await Shell.Current.GoToAsync("//Start");          
-=======
             await Shell.Current.GoToAsync($"//Start",
                 new Dictionary<string, object>
                 {
                     ["Employee"] = Employee
                 });
->>>>>>> 6807885ae19d1dbe1846aa3509d4314567bab109
         }
     }
 }
