@@ -37,7 +37,8 @@ namespace ProjectsERPMaui.ViewModel
         {
             await Shell.Current.GoToAsync("//Task", new Dictionary<string, object>
             {
-                ["Proj"] = proj
+                ["Proj"] = proj,
+                ["TaskList"] = proj.TaskList
             });
         }
     }

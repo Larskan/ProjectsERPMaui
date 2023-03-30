@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace ProjectsERPMaui.ViewModel
 {
     [QueryProperty(nameof(Proj), nameof(Proj))]
+    [QueryProperty(nameof (TaskList), nameof(TaskList))]
 
     public partial class TaskViewModel : ObservableObject
     {
@@ -27,7 +28,8 @@ namespace ProjectsERPMaui.ViewModel
         public TaskViewModel()
         {
             Proj = new Project();
-            //ProjTaskList = new ObservableCollection<ProjectTask>(Proj.TaskList);
+            TaskList = new List<ProjectTask>();
+            ProjTaskList = new ObservableCollection<ProjectTask>(TaskList);
         }
 
         [RelayCommand]
