@@ -13,7 +13,7 @@
         RowDefinitions="*,Auto"
         RowSpacing="0"
         BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
-        <!--<Frame HeightRequest="125" Style="{StaticResource CardView}">
+        <Frame HeightRequest="125" Style="{StaticResource CardView}">
             <Grid Padding="0" ColumnDefinitions="*" Grid.Row="0" Grid.ColumnSpan="3" >
                 <VerticalStackLayout
                     VerticalOptions="Center"
@@ -24,7 +24,7 @@
                     <Label Style="{StaticResource LargeLabel}" Text="{Binding Proj.ProjectName}" FontSize="20" FontAttributes="Bold" />
                 </VerticalStackLayout>
             </Grid>
-        </Frame>-->
+        </Frame>
         <RefreshView
             Grid.ColumnSpan="3">
             <ContentView>
