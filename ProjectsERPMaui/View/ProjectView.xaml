@@ -17,7 +17,7 @@
             Grid.ColumnSpan="3">
             <ContentView>
                 <CollectionView
-                        ItemsSource="{Binding Projects}"
+                        ItemsSource="{Binding ProjList}"
                         SelectionMode="None">
                     <CollectionView.EmptyView>
                         <StackLayout Padding="100">

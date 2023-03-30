@@ -9,7 +9,7 @@
 
     <VerticalStackLayout VerticalOptions="CenterAndExpand" Padding="50" Spacing="20">
         <Label 
-            Text="{Binding Employee.FirstName}"
+            Text="{Binding Empl.FirstName}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Frame  CornerRadius="40" Padding="1" BackgroundColor="DarkGray">

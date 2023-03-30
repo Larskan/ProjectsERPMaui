@@ -10,23 +10,36 @@ using System.Threading.Tasks;
 
 namespace ProjectsERPMaui.ViewModel
 {
-    [QueryProperty(nameof(Project), nameof(Project))]
+    [QueryProperty(nameof(Proj), nameof(Proj))]
+
     public partial class TaskViewModel : ObservableObject
     {
-        ObservableCollection<Task> tasksList = new ObservableCollection<Task>();
+        [ObservableProperty]
+        ObservableCollection<ProjectTask> _projTaskList;
+
 
         [ObservableProperty]
-        public Project _project;
+        List<ProjectTask> _taskList;
+
+        [ObservableProperty]
+        public Project _proj;
 
         public TaskViewModel()
         {
-            _project = new Project();
+            Proj = new Project();
+            //ProjTaskList = new ObservableCollection<ProjectTask>(Proj.TaskList);
         }
 
         [RelayCommand]
         public async void GoToLoginPage()
         {
             await Shell.Current.GoToAsync(nameof(View.LoginView));
+        }
+
+        [RelayCommand]
+        public async void GoToPomodoroPage() 
+        {
+            await Shell.Current.GoToAsync("//Start");
         }
     }
 }

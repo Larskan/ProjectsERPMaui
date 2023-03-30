@@ -2,6 +2,7 @@
 using ProjectsERPMaui.Model;
 using System;
 using System.Collections.Generic;
+using System.Formats.Asn1;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -64,14 +65,12 @@ namespace ProjectsERPMaui.Services
 
         }
 
-        Project projects;
-        public async Task<Project> GetProjects(int empID)
+        List<Project> projectClass;
+        public async Task<List<Project>> GetProjects(int empID)
         {
-            List<ProjectTask> projectClass = new List<ProjectTask>();
+            projectClass = new List<Project>();
 
             HttpClient httpClient = new HttpClient();
-
-            string IpAd = "http://172.28.126.160:7048/BC/ODataV4/ERPWebGet_GetProjectTask?Company=CRONUS%20Danmark%20A%2FS";
 
             var _token = USER_PASS;
             var _tokenBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(_token));
@@ -84,7 +83,7 @@ namespace ProjectsERPMaui.Services
 
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await httpClient.PostAsync(IpAd, content);
+            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebGet_GetProjectTask?Company=CRONUS%20Danmark%20A%2FS", content);
 
             string data = "";
 
@@ -93,14 +92,14 @@ namespace ProjectsERPMaui.Services
                 data = await response.Content.ReadAsStringAsync();
                 ERPJsonConverterClass Json = JsonSerializer.Deserialize<ERPJsonConverterClass>(data);
                 //root = JsonSerializer.Deserialize<Root>(Json.value);
-                projectClass = JsonSerializer.Deserialize<List<ProjectTask>>(Json.value);
+                projectClass = JsonSerializer.Deserialize<List<Project>>(Json.value);
             }
             else
             {
                 Console.WriteLine("Error: ", "somthing went wrong", "OK");
             }
 
-            return projects;
+            return projectClass;
         }
     }
 }
