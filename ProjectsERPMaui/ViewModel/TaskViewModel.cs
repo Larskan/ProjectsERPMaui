@@ -30,7 +30,6 @@ namespace ProjectsERPMaui.ViewModel
             Proj = new Project();
             TaskList = new List<ProjectTask>();
             ProjTaskList = new ObservableCollection<ProjectTask>(TaskList);
-            Console.WriteLine(Proj.ProjectName);
         }
 
         [RelayCommand]
