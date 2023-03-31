@@ -44,12 +44,15 @@ namespace ProjectsERPMaui.ViewModel
         [RelayCommand]
         public async void StartPomo()
         {
-            isRunning = true;
-            while (isRunning) 
+            if(!isRunning)
             {
-                time = time.Add(TimeSpan.FromSeconds(1));
-                SetTime();
-                await Task.Delay(TimeSpan.FromSeconds(1));
+                isRunning = true;
+                while (isRunning)
+                {
+                    time = time.Add(TimeSpan.FromSeconds(1));
+                    SetTime();
+                    await Task.Delay(TimeSpan.FromSeconds(1));
+                }
             }
         }
 
