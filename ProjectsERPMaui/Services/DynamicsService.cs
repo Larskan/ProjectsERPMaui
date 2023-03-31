@@ -19,9 +19,9 @@ namespace ProjectsERPMaui.Services
         HttpClient httpClient;
 
         // change her to your ip
-        private string IP_AD = "http://172.28.126.160:7048";
+        private string IP_AD = "http://172.27.220.170:7048";
         // change hier your user and password
-        private string USER_PASS = $"admin:Password";
+        private string USER_PASS = $"Admin:Pass";
 
         public DynamicsService()
         {
@@ -69,7 +69,7 @@ namespace ProjectsERPMaui.Services
                 //converting the string to a Json and than serialize it and create the employee
                 data = await response.Content.ReadAsStringAsync();
                 //Deserializes the data string to instance of ERPJsonConverterClass and assing it to Json var
-                ERPJsonConverterClass Json = JsonSerializer.Deserialize<ERPJsonConverterClass>(data);
+                ERPJsonConverterString Json = JsonSerializer.Deserialize<ERPJsonConverterString>(data);
                 //Deserializes the value of Json object to an instance of Employee Class 
                 employee = JsonSerializer.Deserialize<Employee>(Json.value);
 
@@ -125,7 +125,7 @@ namespace ProjectsERPMaui.Services
                 //Retrieves response body as a string
                 data = await response.Content.ReadAsStringAsync();
                 //Deserializes the data string to instance of ERPJsonConverterClass and assing it to Json var
-                ERPJsonConverterClass Json = JsonSerializer.Deserialize<ERPJsonConverterClass>(data);
+                ERPJsonConverterString Json = JsonSerializer.Deserialize<ERPJsonConverterString>(data);
                 //root = JsonSerializer.Deserialize<Root>(Json.value);
                 //Deserializes the value of Json object to an instance of Employee Class 
                 projectClass = JsonSerializer.Deserialize<List<Project>>(Json.value);
@@ -167,14 +167,15 @@ namespace ProjectsERPMaui.Services
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
             //POST request to URL with content as request body and assigns response
-            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebGet_GetProjectTask?Company=CRONUS%20Danmark%20A%2FS", content);
+            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebInsert_UpdateTimeUsed?Company=CRONUS%20Danmark%20A%2FS", content);
 
             string data = "";
 
             if (response.IsSuccessStatusCode)
             {
+                
                 data = await response.Content.ReadAsStringAsync();
-                ERPJsonConverterClass Json = JsonSerializer.Deserialize<ERPJsonConverterClass>(data);
+                ERPJsonConverterBoolean Json = JsonSerializer.Deserialize<ERPJsonConverterBoolean>(data);
                 //root = JsonSerializer.Deserialize<Root>(Json.value);
                 done = JsonSerializer.Deserialize<bool>(Json.value);
             }

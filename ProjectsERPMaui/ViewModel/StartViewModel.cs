@@ -36,7 +36,7 @@ namespace ProjectsERPMaui.ViewModel
             Empl = new Employee();
             dynamicsService = new DynamicsService();
             ProjectsList = new List<Project>();
-            Testdata();
+            //Testdata();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-                //ProjectsList = await dynamicsService.GetProjects(Employee.EmpID);
+                ProjectsList = await dynamicsService.GetProjects(Empl.EmpID);
                 ProjList = new ObservableCollection<Project>(ProjectsList);
                 await GoToProjectPage();
             }
@@ -79,7 +79,7 @@ namespace ProjectsERPMaui.ViewModel
             {
                 ProjectName = "Test1",
                 ProjectID = 1,
-                TaskList = new List<ProjectTask> { new ProjectTask() { TaskName = "Task Test", PlanTime = 50, TimeUsed = 10, Description = "Hallo user", ProjectID = 1, TaskID = 1} },
+                taskList = new List<ProjectTask>() //{ new ProjectTask() { TaskName = "Task Test", PlanTime = 50, TimeUsed = 10, Description = "Hallo user", ProjectID = 1, TaskID = 1} },
             });
             ProjectsList.Add(new Project()
             {

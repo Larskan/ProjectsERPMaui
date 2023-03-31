@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 
 namespace ProjectsERPMaui.Model
 {
-    /// <summary>
-    /// Converting and splitting the Json to a usable value
-    /// </summary>
-    internal class ERPJsonConverterClass
+    internal class ERPJsonConverterBoolean
     {
         [JsonProperty("@odata.context")]
         public string odatacontext { get; set; }
-        public string value { get; set; }
+        public Boolean value { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace ProjectsERPMaui.ViewModel
 
         public TimeOnly time;
 
-        public double number;
+        public decimal number;
 
         [ObservableProperty]
         string _timerText;
@@ -70,12 +70,18 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-                if (Double.TryParse(TimerText, out number))
+                List<string> TimerList = new List<string>(TimerText.Split(":"));
+                number += Convert.ToInt64(TimerList[0]);
+                decimal secConvert = Convert.ToInt64(TimerList[1]);
+                if (secConvert > 30) 
                 {
-                    ProjTask.TimeUsed += number;
+                    number += 1;
                 }
-                //bool check = await dynamicsService.UpdateTasks(ProjTask);
-                if (true)
+                
+                ProjTask.totalTimeUsed += number;
+                
+                bool check = await dynamicsService.UpdateTasks(ProjTask);
+                if (check)
                 {
                     isRunning = false;
                     time = new TimeOnly();
@@ -103,13 +109,13 @@ namespace ProjectsERPMaui.ViewModel
             {
                 if (!isRunning)
                 {
-                    if (Double.TryParse(TimerText, out number))
+                    if (Decimal.TryParse(TimerText, out number))
                     {
-                        ProjTask.TimeUsed += number;
+                        ProjTask.totalTimeUsed += number;
                     }
-                    ProjTask.TaskStatus = true;
-                    //bool check = await dynamicsService.UpdateTasks(ProjTask);
-                    if (true)
+                    ProjTask.taskStatus = true;
+                    bool check = await dynamicsService.UpdateTasks(ProjTask);
+                    if (check)
                     {
                         isRunning = false;
                         time = new TimeOnly();

@@ -60,10 +60,10 @@
                                                 VerticalOptions="Center"
                                                 Grid.Column="2"
                                                 Padding="10">
-                                            <Label Style="{StaticResource LargeLabel}" Text="{Binding TaskName}" />
-                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding PlanTime}" />
-                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding TimeUsed}" />
-                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding Description}" />
+                                            <Label Style="{StaticResource LargeLabel}" Text="{Binding taskName}" />
+                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding taskPlanTime}" />
+                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding totalTimeUsed}" />
+                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding description}" />
                                         </VerticalStackLayout>
                                     </Grid>
                                 </Frame>

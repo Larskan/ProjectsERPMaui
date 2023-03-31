@@ -8,13 +8,13 @@ namespace ProjectsERPMaui.Model
 {
     public class ProjectTask
     {
-        public int? TaskID { get; set; }
-        public int? ProjectID { get; set; }
-        public string? TaskName { get; set; }
-        public string? Description { get; set; }
-        public double TimeUsed { get; set; }
-        public int PlanTime { get; set; }
-        public bool TaskStatus { get; set; }
+        public int? taskID { get; set; }
+        public int? projectID { get; set; }
+        public string? taskName { get; set; }
+        public string? description { get; set; }
+        public decimal totalTimeUsed { get; set; }
+        public int taskPlanTime { get; set; }
+        public bool taskStatus { get; set; }
 
     }
 }

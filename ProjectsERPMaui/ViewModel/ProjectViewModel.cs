@@ -46,7 +46,7 @@ namespace ProjectsERPMaui.ViewModel
         async void GoToTaskPage(Project proj)
         {
 
-            ObservableCollection<ProjectTask> Convert = new ObservableCollection<ProjectTask>(proj.TaskList);
+            ObservableCollection<ProjectTask> Convert = new ObservableCollection<ProjectTask>(proj.taskList);
             await Shell.Current.GoToAsync("//Task", new Dictionary<string, object>
             {
                 //Objects passed to Task Page

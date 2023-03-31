@@ -11,6 +11,6 @@ namespace ProjectsERPMaui.Model
     {
         public int? ProjectID { get; set; }
         public string? ProjectName { get; set; }
-        public List<ProjectTask>? TaskList { get; set; }
+        public List<ProjectTask>? taskList { get; set; }
     }
 }
