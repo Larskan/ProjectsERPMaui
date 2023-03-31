@@ -116,7 +116,7 @@ namespace ProjectsERPMaui.Services
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
             //Sends POST request to API endpoint with JSON object as the request body
-            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebGet_UpdateTimeUsed?Company=CRONUS%20Danmark%20A%2FS", content);
+            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebGet_GetProjectTask?Company=CRONUS%20Danmark%20A%2FS", content);
 
             string data = "";
 
@@ -162,7 +162,7 @@ namespace ProjectsERPMaui.Services
             String jsonData = JsonSerializer.Serialize<ProjectTask>(projectTask);
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebGet_GetProjectTask?Company=CRONUS%20Danmark%20A%2FS", content);
+            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebGet_UpdateTimeUsed?Company=CRONUS%20Danmark%20A%2FS", content);
 
             string data = "";
 
