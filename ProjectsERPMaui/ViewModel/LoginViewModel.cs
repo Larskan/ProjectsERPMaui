@@ -29,13 +29,19 @@ namespace ProjectsERPMaui.ViewModel
 
         [ObservableProperty]
         public Employee _empl;
+
+        /// <summary>
+        /// Defines constructor that initializes the Empl with a new Employee object, same with dynamicsService
+        /// </summary>
         public LoginViewModel()
         {
             Empl= new Employee { EmpID = 1, FirstName = "Peter", LastName = "Karlson", Boolean = true};
             dynamicsService = new DynamicsService();
         }
 
+        //RelayCommand: Method is treated as a command to be executed by UI
         [RelayCommand]
+        //Login user if username and password matches a known user
         public async void LoginCheck()
         {
             try
@@ -59,6 +65,11 @@ namespace ProjectsERPMaui.ViewModel
             }
         }
 
+        /// <summary>
+        /// Method to return a task. 
+        /// Navigates to Start page of application and passes the Empl property as a param in a dictionary of additional params
+        /// </summary>
+        /// <returns>Task</returns>
         async Task GoToStartPage()
         {
             await Shell.Current.GoToAsync($"//Start",

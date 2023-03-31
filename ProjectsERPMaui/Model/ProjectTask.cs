@@ -14,6 +14,6 @@ namespace ProjectsERPMaui.Model
         public string? Description { get; set; }
         public double TimeUsed { get; set; }
         public int PlanTime { get; set; }
-
+        
     }
 }

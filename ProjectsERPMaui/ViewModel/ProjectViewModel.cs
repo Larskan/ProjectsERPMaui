@@ -26,6 +26,9 @@ namespace ProjectsERPMaui.ViewModel
         public Project _proj;
 
         DynamicsService dynamicsService;
+        /// <summary>
+        /// Constructor that initializes
+        /// </summary>
         public ProjectViewModel() 
         {
             ProjList = new ObservableCollection<Project>();
@@ -33,11 +36,14 @@ namespace ProjectsERPMaui.ViewModel
         }
 
         [RelayCommand]
+        //Takes Project object and creates new ObservableCollection from TaskList of Project object
+        //Then navigates to Task page using GoToAsync
         async void GoToTaskPage(Project proj)
         {
             ObservableCollection<ProjectTask> Convert = new ObservableCollection<ProjectTask>(proj.TaskList);
             await Shell.Current.GoToAsync("//Task", new Dictionary<string, object>
             {
+                //Objects passed to Task Page
                 ["Proj"] = proj,
                 ["ProjTaskList"] = Convert
             });
