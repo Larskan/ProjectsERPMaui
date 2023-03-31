@@ -124,7 +124,7 @@ namespace ProjectsERPMaui.ViewModel
                         isRunning = false;
                         time = new TimeOnly();
                         SetTime();
-                        await Shell.Current.GoToAsync("//Start");
+                        await Shell.Current.GoToAsync("//Pomo");
                     }
                     else
                     {

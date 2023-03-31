@@ -22,9 +22,8 @@
                     Grid.Row="1"
                     Padding="20">
                 <Label Style="{StaticResource EmpLabel}" Text="Name:"/>
-                <Label Style="{StaticResource EmpLabel}" Text="ID:"/>
-                <Label Style="{StaticResource EmpLabel}" Text="Time:"/>
-                <Label Style="{StaticResource EmpLabel}" Text="Used Time:"/>
+                <Label Style="{StaticResource EmpLabel}" Text="Lastname"/>
+                <Label Style="{StaticResource EmpLabel}" Text="ID"/>
             </VerticalStackLayout>
 
 
@@ -35,7 +34,6 @@
                 <Label Style="{StaticResource EmpLabel}" Text="{Binding Empl.FirstName}"/>
                 <Label Style="{StaticResource EmpLabel}" Text="{Binding Empl.LastName}"/>
                 <Label Style="{StaticResource EmpLabel}" Text="{Binding Empl.EmpID}"/>
-                <Label Style="{StaticResource EmpLabel}" Text="{Binding Empl.Boolean}"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout
