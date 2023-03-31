@@ -7,7 +7,10 @@ namespace ProjectsERPMaui.Messages
 {
     public class SendEmployeeInfo : ValueChangedMessage<Employee>
     {
-        //Constructor that takes Employee object and calls constructor of base class(ValueChangedMessage)
+        /// <summary>
+        /// Constructor that takes Employee object and calls constructor of base class(ValueChangedMessage)
+        /// </summary>
+        /// <param name="value"></param>
         public SendEmployeeInfo(Employee value) : base(value)
         {
 

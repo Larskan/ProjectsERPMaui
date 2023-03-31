@@ -31,12 +31,12 @@ namespace ProjectsERPMaui.Services
 
         Employee employee;
         /// <summary>
-        /// checks if the user exist and the pssword is correct witch the user 
-        /// has entered in the application by comunicting with dynamics
+        /// checks if the user exist and the password is correct with the user 
+        /// has entered in the application by communicating with dynamics
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <returns></returns>
+        /// <param name="username">Employees Username</param>
+        /// <param name="password">Employees Password</param>
+        /// <returns>Employee Object wrapped in Task Object</returns>
         public async Task<Employee> GetEmployee(string username, string password)
         {
             //Creates new instance of the Employee class and assigns it to employee variable
@@ -87,10 +87,10 @@ namespace ProjectsERPMaui.Services
         //Declares list of projects to hold data return by API
         List<Project> projectClass;
         /// <summary>
-        /// gets all projects with are available for the user who is login
+        /// gets all projects that are available for the user who is logged in
         /// </summary>
-        /// <param name="empID"></param>
-        /// <returns></returns>
+        /// <param name="empID">Employee ID</param>
+        /// <returns>List of Projects retrieved from API</returns>
         public async Task<List<Project>> GetProjects(int empID)
         {
             //Initializes empty list of projects
@@ -145,23 +145,28 @@ namespace ProjectsERPMaui.Services
         /// updates the time used for the selected task
         /// </summary>
         /// <param name="projectTask"></param>
-        /// <returns></returns>
+        /// <returns>Boolean if update was successful</returns>
         public async Task<bool> UpdateTasks(ProjectTask projectTask)
         {
-
+            //Instance of HttpClient
             HttpClient httpClient = new HttpClient();
 
             var _token = USER_PASS;
+            //Converts token to base64-encoded string for authentication
             var _tokenBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(_token));
 
+            //Application/json media type to the list of accepted response formats
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+            //Authorization header to HTTP request
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _tokenBase64);
 
             //ProjectTask temp = new ProjectTask();
             String jsonData = JsonSerializer.Serialize<ProjectTask>(projectTask);
+            //New StringContent to hold JSON object
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
+            //POST request to URL with content as request body and assigns response
             HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebGet_GetProjectTask?Company=CRONUS%20Danmark%20A%2FS", content);
 
             string data = "";
@@ -175,9 +180,11 @@ namespace ProjectsERPMaui.Services
             }
             else
             {
+                //Error message
                 Console.WriteLine("Error: ", "somthing went wrong", "OK");
             }
 
+            //Returns if update was successful or not
             return done;
         }
     }
