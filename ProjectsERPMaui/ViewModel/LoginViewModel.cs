@@ -39,7 +39,9 @@ namespace ProjectsERPMaui.ViewModel
             dynamicsService = new DynamicsService();
         }
 
-        //RelayCommand: Method is treated as a command to be executed by UI
+        /// <summary>
+        /// starts the login check based on the information enterd from the user
+        /// </summary>
         [RelayCommand]
         //Login user if username and password matches a known user
         public async void LoginCheck()
@@ -64,12 +66,11 @@ namespace ProjectsERPMaui.ViewModel
                 await Console.Out.WriteLineAsync(ex.Message);
             }
         }
-
         /// <summary>
-        /// Method to return a task. 
-        /// Navigates to Start page of application and passes the Empl property as a param in a dictionary of additional params
+        /// switches to the Starting page where all infomation about the the use
+        /// sends all information (Employee object) to the StartViewModel
         /// </summary>
-        /// <returns>Task</returns>
+        /// <returns></returns>
         async Task GoToStartPage()
         {
             await Shell.Current.GoToAsync($"//Start",

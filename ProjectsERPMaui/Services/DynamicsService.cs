@@ -20,6 +20,7 @@ namespace ProjectsERPMaui.Services
 
         // change her to your ip
         private string IP_AD = "http://172.28.126.160:7048";
+        // change hier your user and password
         private string USER_PASS = $"admin:Password";
 
         public DynamicsService()
@@ -27,12 +28,14 @@ namespace ProjectsERPMaui.Services
             this.httpClient = new HttpClient();
         }
 
+
         Employee employee;
         /// <summary>
-        /// Takes a username and password and returns an Employee object wrapped in a Task object
+        /// checks if the user exist and the pssword is correct witch the user 
+        /// has entered in the application by comunicting with dynamics
         /// </summary>
-        /// <param name="username">Employee Username</param>
-        /// <param name="password">Employee Password</param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
         /// <returns></returns>
         public async Task<Employee> GetEmployee(string username, string password)
         {
@@ -84,9 +87,9 @@ namespace ProjectsERPMaui.Services
         //Declares list of projects to hold data return by API
         List<Project> projectClass;
         /// <summary>
-        /// Async method that takes Employee ID and returns a List of Project Objects
+        /// gets all projects with are available for the user who is login
         /// </summary>
-        /// <param name="empID">Employee ID</param>
+        /// <param name="empID"></param>
         /// <returns></returns>
         public async Task<List<Project>> GetProjects(int empID)
         {
@@ -135,6 +138,47 @@ namespace ProjectsERPMaui.Services
 
             //Returns the list of Project objects retrieved from the API
             return projectClass;
+        }
+
+        bool done;
+        /// <summary>
+        /// updates the time used for the selected task
+        /// </summary>
+        /// <param name="projectTask"></param>
+        /// <returns></returns>
+        public async Task<bool> UpdateTasks(ProjectTask projectTask)
+        {
+
+            HttpClient httpClient = new HttpClient();
+
+            var _token = USER_PASS;
+            var _tokenBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(_token));
+
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _tokenBase64);
+
+            //ProjectTask temp = new ProjectTask();
+            String jsonData = JsonSerializer.Serialize<ProjectTask>(projectTask);
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebGet_GetProjectTask?Company=CRONUS%20Danmark%20A%2FS", content);
+
+            string data = "";
+
+            if (response.IsSuccessStatusCode)
+            {
+                data = await response.Content.ReadAsStringAsync();
+                ERPJsonConverterClass Json = JsonSerializer.Deserialize<ERPJsonConverterClass>(data);
+                //root = JsonSerializer.Deserialize<Root>(Json.value);
+                done = JsonSerializer.Deserialize<bool>(Json.value);
+            }
+            else
+            {
+                Console.WriteLine("Error: ", "somthing went wrong", "OK");
+            }
+
+            return done;
         }
     }
 }

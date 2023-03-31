@@ -35,11 +35,17 @@ namespace ProjectsERPMaui.ViewModel
             dynamicsService = new DynamicsService();
         }
 
+        /// <summary>
+        /// switches to Task page and converts the tasklist 
+        /// to an ObservableCollection and send it to the TaskViewModel
+        /// </summary>
+        /// <param name="proj"></param>
         [RelayCommand]
         //Takes Project object and creates new ObservableCollection from TaskList of Project object
         //Then navigates to Task page using GoToAsync
         async void GoToTaskPage(Project proj)
         {
+
             ObservableCollection<ProjectTask> Convert = new ObservableCollection<ProjectTask>(proj.TaskList);
             await Shell.Current.GoToAsync("//Task", new Dictionary<string, object>
             {
