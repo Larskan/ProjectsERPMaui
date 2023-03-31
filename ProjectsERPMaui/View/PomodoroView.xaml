@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectsERPMaui.View.PomodoroView"
+             xmlns:viewModel="clr-namespace:ProjectsERPMaui.ViewModel"
+             x:DataType="viewModel:PomodoroViewModel"
+             xmlns:model="clr-namespace:ProjectsERPMaui.Model"
+             Title="Pomodoro Page"
+             Shell.NavBarIsVisible="True">
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding ProjTask.TaskName}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -50,6 +50,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\businessperson.png" />
+	  <None Remove="Resources\Images\pomo.png" />
+	  <None Remove="Resources\Images\pomodoro.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -64,6 +66,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="View\LoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\PomodoroView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\ProjectView.xaml">
