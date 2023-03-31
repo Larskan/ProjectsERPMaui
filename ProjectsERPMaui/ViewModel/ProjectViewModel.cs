@@ -35,6 +35,7 @@ namespace ProjectsERPMaui.ViewModel
         [RelayCommand]
         async void GoToTaskPage(Project proj)
         {
+
             ObservableCollection<ProjectTask> Convert = new ObservableCollection<ProjectTask>(proj.TaskList);
             await Shell.Current.GoToAsync("//Task", new Dictionary<string, object>
             {
