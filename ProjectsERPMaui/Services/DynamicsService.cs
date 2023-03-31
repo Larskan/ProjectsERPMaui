@@ -17,7 +17,7 @@ namespace ProjectsERPMaui.Services
         HttpClient httpClient;
 
         // change her to your ip
-        string IpAd = "http://172.28.126.160:7048";
+        string IpAd = "http://172.28.117.231:7048";
 
         public DynamicsService()
         {
