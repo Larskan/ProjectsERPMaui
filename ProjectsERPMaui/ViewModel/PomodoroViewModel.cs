@@ -89,7 +89,7 @@ namespace ProjectsERPMaui.ViewModel
                 }
                 else
                 {
-                    //await Shell.Current.DisplayAlert("No Update", "sorry", "OK");
+                    await Shell.Current.DisplayAlert("No Update", "sorry", "OK");
                 }
             }
             catch (Exception ex)
