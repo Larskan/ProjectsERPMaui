@@ -28,10 +28,10 @@ namespace ProjectsERPMaui.ViewModel
         public string _messageText;
 
         [ObservableProperty]
-        public Employee _employee;
+        public Employee _empl;
         public LoginViewModel()
         {
-            Employee= new Employee { EmpID = 1, FirstName = "Peter", LastName = "Karlson", Boolean = true};
+            Empl= new Employee { EmpID = 1, FirstName = "Peter", LastName = "Karlson", Boolean = true};
             dynamicsService = new DynamicsService();
         }
 
@@ -43,7 +43,7 @@ namespace ProjectsERPMaui.ViewModel
 
                 //Employee = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
                 //await Shell.Current.DisplayAlert("Employee = ", "lastname " + Employee.LastName + " name " + Employee.FirstName, "ok");
-                if (Employee.Boolean)
+                if (Empl.Boolean)
                 {
                     await GoToStartPage();
                     MessageText = "";
@@ -64,7 +64,7 @@ namespace ProjectsERPMaui.ViewModel
             await Shell.Current.GoToAsync($"//Start",
                 new Dictionary<string, object>
                 {
-                    ["Employee"] = Employee
+                    ["Empl"] = Empl
                 });
         }
     }

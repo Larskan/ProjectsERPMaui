@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ProjectsERPMaui.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,14 +10,33 @@ using System.Threading.Tasks;
 
 namespace ProjectsERPMaui.ViewModel
 {
+    [QueryProperty(nameof(Proj), nameof(Proj))]
+    [QueryProperty(nameof(ProjTaskList), nameof(ProjTaskList))]
+
     public partial class TaskViewModel : ObservableObject
     {
-        ObservableCollection<Task> tasksList = new ObservableCollection<Task>();
+        [ObservableProperty]
+        ObservableCollection<ProjectTask> _projTaskList;
+
+        [ObservableProperty]
+        public Project _proj;
+
+        public TaskViewModel()
+        {
+            Proj = new Project();
+            ProjTaskList = new ObservableCollection<ProjectTask>();          
+        }
 
         [RelayCommand]
         public async void GoToLoginPage()
         {
             await Shell.Current.GoToAsync(nameof(View.LoginView));
+        }
+
+        [RelayCommand]
+        public async void GoToPomodoroPage() 
+        {
+            await Shell.Current.GoToAsync("//Start");
         }
     }
 }

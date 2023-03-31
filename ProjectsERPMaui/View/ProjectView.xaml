@@ -15,10 +15,9 @@
         BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
         <RefreshView
             Grid.ColumnSpan="3">
-            <!--IsRefreshing="{Binding IsRefreshing}">-->
             <ContentView>
                 <CollectionView
-                        ItemsSource="{Binding Projects}"
+                        ItemsSource="{Binding ProjList}"
                         SelectionMode="None">
                     <CollectionView.EmptyView>
                         <StackLayout Padding="100">
@@ -39,7 +38,7 @@
                                 <Frame HeightRequest="125" Style="{StaticResource CardView}">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer 
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:TaskViewModel}}}"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ProjectViewModel}},Path=GoToTaskPageCommand}"
                                                 CommandParameter="{Binding .}"/>
                                     </Frame.GestureRecognizers>
                                     <Grid Padding="0" ColumnDefinitions="125,*,*">
@@ -54,8 +53,6 @@
                                                 Padding="10">
                                             <Label Style="{StaticResource BaseLabel}" Text="Name:"/>
                                             <Label Style="{StaticResource BaseLabel}" Text="ID:"/>
-                                            <Label Style="{StaticResource BaseLabel}" Text="Time:"/>
-                                            <Label Style="{StaticResource BaseLabel}" Text="Used Time:"/>
                                         </VerticalStackLayout>
                                         <VerticalStackLayout
                                                 VerticalOptions="Center"
@@ -63,8 +60,6 @@
                                                 Padding="10">
                                             <Label Style="{StaticResource LargeLabel}" Text="{Binding ProjectName}" />
                                             <Label Style="{StaticResource MediumLabel}" Text="{Binding ProjectID}" />
-                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding TotalTime}" />
-                                            <Label Style="{StaticResource MediumLabel}" Text="{Binding RemainingTime}" />
                                         </VerticalStackLayout>
                                     </Grid>
                                 </Frame>
@@ -74,33 +69,11 @@
                 </CollectionView>
             </ContentView>
         </RefreshView>
-
-        <!--<Button
-            Grid.Row="1"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            Margin="8"
-            Command="{Binding GetProjectsCommand}"
-            Style="{StaticResource ButtonOutline}"
-            Text="Get Projects" />-->
-            <!--IsEnabled="{Binding IsNotBusy}"-->
-
-        <!--  Add this  -->
-        <!--<Button
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="8"
-            Command="{Binding GetClosestMonkeyCommand}"
-            IsEnabled="{Binding IsNotBusy}"
-            Style="{StaticResource ButtonOutline}"
-            Text="Find Closest" />-->
         <ActivityIndicator
             Grid.RowSpan="2"
             Grid.ColumnSpan="2"
             HorizontalOptions="Fill"
             Color="{StaticResource Primary}"
             VerticalOptions="Center" />
-        <!--IsRunning="{Binding IsBusy}"
-            IsVisible="{Binding IsBusy}"-->
     </Grid>
 </ContentPage>
