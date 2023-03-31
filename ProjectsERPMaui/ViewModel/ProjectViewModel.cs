@@ -32,6 +32,11 @@ namespace ProjectsERPMaui.ViewModel
             dynamicsService = new DynamicsService();
         }
 
+        /// <summary>
+        /// switches to Task page and converts the tasklist 
+        /// to an ObservableCollection and send it to the TaskViewModel
+        /// </summary>
+        /// <param name="proj"></param>
         [RelayCommand]
         async void GoToTaskPage(Project proj)
         {

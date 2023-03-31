@@ -27,6 +27,10 @@ namespace ProjectsERPMaui.ViewModel
             ProjTaskList = new ObservableCollection<ProjectTask>();          
         }
 
+        /// <summary>
+        /// goes to the Pomodoro page and sends the silected Pomodoro to the side
+        /// </summary>
+        /// <param name="projTask"></param>
         [RelayCommand]
         public async void GoToPomodoroPage(ProjectTask projTask) 
         {

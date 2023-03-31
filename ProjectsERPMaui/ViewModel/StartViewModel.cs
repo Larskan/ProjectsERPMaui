@@ -39,6 +39,9 @@ namespace ProjectsERPMaui.ViewModel
             Testdata();
         }
 
+        /// <summary>
+        /// Get all project from the Dynamics side
+        /// </summary>
         [RelayCommand]
         public async void GetProjects()
         {
@@ -54,6 +57,12 @@ namespace ProjectsERPMaui.ViewModel
             }
 
         }
+
+        /// <summary>
+        /// goes to the project page if the was some available project
+        /// and send a list of all project to the ProjectViewModel
+        /// </summary>
+        /// <returns></returns>
         async Task GoToProjectPage()
         {
             await Shell.Current.GoToAsync($"//Project",

@@ -19,6 +19,7 @@ namespace ProjectsERPMaui.Services
 
         // change her to your ip
         private string IP_AD = "http://172.28.126.160:7048";
+        // change hier your user and password
         private string USER_PASS = $"admin:Password";
 
         public DynamicsService()
@@ -26,7 +27,15 @@ namespace ProjectsERPMaui.Services
             this.httpClient = new HttpClient();
         }
 
+
         Employee employee;
+        /// <summary>
+        /// checks if the user exist and the pssword is correct witch the user 
+        /// has entered in the application by comunicting with dynamics
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public async Task<Employee> GetEmployee(string username, string password)
         {
             employee = new Employee();
@@ -66,6 +75,11 @@ namespace ProjectsERPMaui.Services
         }
 
         List<Project> projectClass;
+        /// <summary>
+        /// gets all projects with are available for the user who is login
+        /// </summary>
+        /// <param name="empID"></param>
+        /// <returns></returns>
         public async Task<List<Project>> GetProjects(int empID)
         {
             projectClass = new List<Project>();
@@ -103,6 +117,11 @@ namespace ProjectsERPMaui.Services
         }
 
         bool done;
+        /// <summary>
+        /// updates the time used for the selected task
+        /// </summary>
+        /// <param name="projectTask"></param>
+        /// <returns></returns>
         public async Task<bool> UpdateTasks(ProjectTask projectTask)
         {
 

@@ -38,6 +38,9 @@ namespace ProjectsERPMaui.ViewModel
             TimerText = $"{time.Minute}:{time.Second:00}";
         }
 
+        /// <summary>
+        /// starts the pomodoro timer
+        /// </summary>
         [RelayCommand]
         public async void StartPomo()
         {
@@ -50,12 +53,18 @@ namespace ProjectsERPMaui.ViewModel
             }
         }
 
+        /// <summary>
+        /// set teh timer to pause
+        /// </summary>
         [RelayCommand]
         public void PausePomo() 
         {
             isRunning = false;
         }
 
+        /// <summary>
+        /// stops the pomodoro session and send the used time until now
+        /// </summary>
         [RelayCommand]
         public async void StopPomo() 
         {
@@ -84,6 +93,9 @@ namespace ProjectsERPMaui.ViewModel
 
         }
 
+        /// <summary>
+        /// closes the task and updates the used time until now
+        /// </summary>
         [RelayCommand]
         public async void SendPomo() 
         {
@@ -116,6 +128,9 @@ namespace ProjectsERPMaui.ViewModel
             }
         }
 
+        /// <summary>
+        /// is need to update the timer label
+        /// </summary>
         private void SetTime()
         {
             TimerText = $"{time.Minute}:{time.Second:00}";

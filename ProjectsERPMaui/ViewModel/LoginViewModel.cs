@@ -35,6 +35,9 @@ namespace ProjectsERPMaui.ViewModel
             dynamicsService = new DynamicsService();
         }
 
+        /// <summary>
+        /// starts the login check based on the information enterd from the user
+        /// </summary>
         [RelayCommand]
         public async void LoginCheck()
         {
@@ -58,7 +61,11 @@ namespace ProjectsERPMaui.ViewModel
                 await Console.Out.WriteLineAsync(ex.Message);
             }
         }
-
+        /// <summary>
+        /// switches to the Starting page where all infomation about the the use
+        /// sends all information (Employee object) to the StartViewModel
+        /// </summary>
+        /// <returns></returns>
         async Task GoToStartPage()
         {
             await Shell.Current.GoToAsync($"//Start",
