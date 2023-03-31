@@ -30,7 +30,7 @@ namespace ProjectsERPMaui.ViewModel
         [RelayCommand]
         public async void GoToPomodoroPage(ProjectTask projTask) 
         {
-            await Shell.Current.GoToAsync("//Start", new Dictionary<string, object>
+            await Shell.Current.GoToAsync("//Pomo", new Dictionary<string, object>
             {
                 ["ProjTask"] = projTask
             });

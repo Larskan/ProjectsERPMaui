@@ -7,10 +7,54 @@
              xmlns:model="clr-namespace:ProjectsERPMaui.Model"
              Title="Pomodoro Page"
              Shell.NavBarIsVisible="True">
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding ProjTask.TaskName}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Frame Style="{StaticResource CardView}">
+        <Grid Padding="0" ColumnDefinitions="75,*,*,*" RowDefinitions="*,*,*,*,*">
+            <Image                       
+                    Aspect="AspectFill"
+                    HeightRequest="100"
+                    WidthRequest="100"
+                    Source="Pomodoro.png"
+                    Grid.ColumnSpan="4"/>
+            <VerticalStackLayout
+                    VerticalOptions="Start"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Padding="0">
+                <Label Style="{StaticResource EmpLabel}" Text="Task Name:"/>
+                <Label Style="{StaticResource EmpLabel}" Text="Pan Time:"/>
+                <Label Style="{StaticResource EmpLabel}" Text="Used Time:"/>
+            </VerticalStackLayout>
+            
+            <VerticalStackLayout
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1">
+                <Label Style="{StaticResource EmpLabel}" Text="{Binding ProjTask.TaskName}"/>
+                <Label Style="{StaticResource EmpLabel}" Text="{Binding ProjTask.PlanTime}"/>
+                <Label Style="{StaticResource EmpLabel}" Text="{Binding ProjTask.TimeUsed}"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout
+                VerticalOptions="Start"
+                HorizontalOptions="Center" 
+                Grid.Row="2"
+                Grid.ColumnSpan="4">
+                <Label Style="{StaticResource EmpLabel}" Text="Description:"/>
+                <Label Style="{StaticResource EmpLabel}" Text="{Binding ProjTask.Description}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="4"
+                Grid.Row="3">
+                <Label Style="{StaticResource EmpLabel}" Text="Hier will be the Timer"/>
+            </VerticalStackLayout>
+            <ImageButton Source="play.png" Grid.Row="4" Grid.Column="0" WidthRequest="70"/>
+            <ImageButton Source="pause.png" Grid.Row="4" Grid.Column="1" WidthRequest="70"/>
+            <ImageButton Source="stop.png" Grid.Row="4" Grid.Column="2" WidthRequest="70"/>
+            <ImageButton Source="send.png" Grid.Row="4" Grid.Column="3" WidthRequest="70"/>
+        </Grid>
+    </Frame>
 </ContentPage>

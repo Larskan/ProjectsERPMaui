@@ -50,8 +50,12 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\businessperson.png" />
+	  <None Remove="Resources\Images\pause.png" />
+	  <None Remove="Resources\Images\play.png" />
 	  <None Remove="Resources\Images\pomo.png" />
 	  <None Remove="Resources\Images\pomodoro.png" />
+	  <None Remove="Resources\Images\send.png" />
+	  <None Remove="Resources\Images\stop.png" />
 	</ItemGroup>
 
 	<ItemGroup>
