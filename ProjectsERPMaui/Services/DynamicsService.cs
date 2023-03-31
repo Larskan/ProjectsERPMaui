@@ -99,11 +99,7 @@ namespace ProjectsERPMaui.Services
                 Console.WriteLine("Error: ", "somthing went wrong", "OK");
             }
 
-<<<<<<< HEAD
-            return projects;
-=======
             return projectClass;
->>>>>>> cb653e410809fdb6e5a8d975266ae94fb3440d55
         }
     }
 }

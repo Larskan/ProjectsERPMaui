@@ -40,10 +40,7 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-<<<<<<< HEAD
-=======
 
->>>>>>> cb653e410809fdb6e5a8d975266ae94fb3440d55
                 //Employee = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
                 //await Shell.Current.DisplayAlert("Employee = ", "lastname " + Employee.LastName + " name " + Employee.FirstName, "ok");
                 if (Empl.Boolean)
