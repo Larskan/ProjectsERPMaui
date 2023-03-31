@@ -101,5 +101,41 @@ namespace ProjectsERPMaui.Services
 
             return projectClass;
         }
+
+        bool done;
+        public async Task<bool> UpdateTasks(ProjectTask projectTask)
+        {
+
+            HttpClient httpClient = new HttpClient();
+
+            var _token = USER_PASS;
+            var _tokenBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(_token));
+
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _tokenBase64);
+
+            //ProjectTask temp = new ProjectTask();
+            String jsonData = JsonSerializer.Serialize<ProjectTask>(projectTask);
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebGet_GetProjectTask?Company=CRONUS%20Danmark%20A%2FS", content);
+
+            string data = "";
+
+            if (response.IsSuccessStatusCode)
+            {
+                data = await response.Content.ReadAsStringAsync();
+                ERPJsonConverterClass Json = JsonSerializer.Deserialize<ERPJsonConverterClass>(data);
+                //root = JsonSerializer.Deserialize<Root>(Json.value);
+                done = JsonSerializer.Deserialize<bool>(Json.value);
+            }
+            else
+            {
+                Console.WriteLine("Error: ", "somthing went wrong", "OK");
+            }
+
+            return done;
+        }
     }
 }

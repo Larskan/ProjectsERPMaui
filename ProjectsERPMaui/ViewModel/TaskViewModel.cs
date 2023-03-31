@@ -28,15 +28,12 @@ namespace ProjectsERPMaui.ViewModel
         }
 
         [RelayCommand]
-        public async void GoToLoginPage()
+        public async void GoToPomodoroPage(ProjectTask projTask) 
         {
-            await Shell.Current.GoToAsync(nameof(View.LoginView));
-        }
-
-        [RelayCommand]
-        public async void GoToPomodoroPage() 
-        {
-            await Shell.Current.GoToAsync("//Start");
+            await Shell.Current.GoToAsync("//Pomo", new Dictionary<string, object>
+            {
+                ["ProjTask"] = projTask
+            });
         }
     }
 }

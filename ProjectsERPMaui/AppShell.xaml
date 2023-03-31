@@ -24,10 +24,11 @@
     </Shell.Resources>
     
     <TabBar>
-        <ShellContent Route="Logout" Title="Logout" Icon="logout.png" ContentTemplate="{DataTemplate local:LoginView}" />
+        <ShellContent Route="Logout" Title="Logout" Icon="logout.png" ContentTemplate="{DataTemplate local:LoginView}"/>
         <ShellContent Route="Start" Title="Start" Icon="home.png" ContentTemplate="{DataTemplate local:StartView}"/>
         <ShellContent Route="Project" Title="Project" Icon="blueprint.png" ContentTemplate="{DataTemplate local:ProjectView}"/>
-        <ShellContent Route="Task" Title="Task" Icon="checklist.png" ContentTemplate="{DataTemplate local:TaskView}" />
+        <ShellContent Route="Task" Title="Task" Icon="checklist.png" ContentTemplate="{DataTemplate local:TaskView}"/>
+        <ShellContent Route="Pomo"  Title="Pomodoro" Icon="Pomo.png" ContentTemplate="{DataTemplate local:PomodoroView}"/>
     </TabBar>
 
 </Shell>
