@@ -49,7 +49,7 @@ namespace ProjectsERPMaui.ViewModel
             try
             {
 
-                //Employee = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
+                Empl = await dynamicsService.GetEmployee(UsernameCheck, PasswordCheck);
                 //await Shell.Current.DisplayAlert("Employee = ", "lastname " + Employee.LastName + " name " + Employee.FirstName, "ok");
                 if (Empl.Boolean)
                 {

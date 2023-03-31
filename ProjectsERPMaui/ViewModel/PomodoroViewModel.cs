@@ -74,8 +74,8 @@ namespace ProjectsERPMaui.ViewModel
                 {
                     ProjTask.TimeUsed += number;
                 }
-                //bool check = await dynamicsService.UpdateTasks(ProjTask);
-                if (true)
+                bool check = await dynamicsService.UpdateTasks(ProjTask);
+                if (check)
                 {
                     isRunning = false;
                     time = new TimeOnly();
@@ -83,7 +83,7 @@ namespace ProjectsERPMaui.ViewModel
                 }
                 else
                 {
-                    //await Shell.Current.DisplayAlert("No Update", "sorry", "OK");
+                    await Shell.Current.DisplayAlert("No Update", "sorry", "OK");
                 }
             }
             catch (Exception ex)
@@ -108,8 +108,8 @@ namespace ProjectsERPMaui.ViewModel
                         ProjTask.TimeUsed += number;
                     }
                     ProjTask.TaskStatus = true;
-                    //bool check = await dynamicsService.UpdateTasks(ProjTask);
-                    if (true)
+                    bool check = await dynamicsService.UpdateTasks(ProjTask);
+                    if (check)
                     {
                         isRunning = false;
                         time = new TimeOnly();

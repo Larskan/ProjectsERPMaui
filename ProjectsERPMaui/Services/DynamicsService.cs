@@ -19,7 +19,8 @@ namespace ProjectsERPMaui.Services
         HttpClient httpClient;
 
         // change her to your ip
-        private string IP_AD = "http://172.28.126.160:7048";
+        //172.17.219.30
+        private string IP_AD = "http://172.17.219.30:7048";
         // change hier your user and password
         private string USER_PASS = $"admin:Password";
 
@@ -167,7 +168,7 @@ namespace ProjectsERPMaui.Services
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
             //POST request to URL with content as request body and assigns response
-            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebGet_GetProjectTask?Company=CRONUS%20Danmark%20A%2FS", content);
+            HttpResponseMessage response = await httpClient.PostAsync(IP_AD + "/BC/ODataV4/ERPWebInsert_UpdateTimeUsed?Company=CRONUS%20Danmark%20A%2FS", content);
 
             string data = "";
 

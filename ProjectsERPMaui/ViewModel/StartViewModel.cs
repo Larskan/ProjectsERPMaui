@@ -36,7 +36,7 @@ namespace ProjectsERPMaui.ViewModel
             Empl = new Employee();
             dynamicsService = new DynamicsService();
             ProjectsList = new List<Project>();
-            Testdata();
+            //Testdata();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-                //ProjectsList = await dynamicsService.GetProjects(Employee.EmpID);
+                ProjectsList = await dynamicsService.GetProjects(Empl.EmpID);
                 ProjList = new ObservableCollection<Project>(ProjectsList);
                 await GoToProjectPage();
             }
