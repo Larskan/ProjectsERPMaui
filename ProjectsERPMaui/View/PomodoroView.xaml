@@ -38,7 +38,8 @@
 
             <VerticalStackLayout
                 VerticalOptions="Start"
-                HorizontalOptions="Center" 
+                HorizontalOptions="Start"
+                Padding="10"
                 Grid.Row="2"
                 Grid.ColumnSpan="4">
                 <Label Style="{StaticResource EmpLabel}" Text="Description:"/>
@@ -49,7 +50,7 @@
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"
                 Grid.Row="3">
-                <Label Style="{StaticResource EmpLabel}" Text="Hier will be the Timer"/>
+                <Label Style="{StaticResource TimeLabel}" Text="{Binding TimerText}" />
             </VerticalStackLayout>
             <ImageButton Source="play.png" Grid.Row="4" Grid.Column="0" WidthRequest="50" Command="{Binding StartPomoCommand}"/>
             <ImageButton Source="pause.png" Grid.Row="4" Grid.Column="1" WidthRequest="50" Command="{Binding PausePomoCommand}"/>
