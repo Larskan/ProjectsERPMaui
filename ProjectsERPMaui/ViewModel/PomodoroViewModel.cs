@@ -109,10 +109,14 @@ namespace ProjectsERPMaui.ViewModel
             {
                 if (!isRunning)
                 {
-                    if (Decimal.TryParse(TimerText, out number))
+                    List<string> TimerList = new List<string>(TimerText.Split(":"));
+                    number += Convert.ToInt64(TimerList[0]);
+                    decimal secConvert = Convert.ToInt64(TimerList[1]);
+                    if (secConvert > 30)
                     {
-                        ProjTask.totalTimeUsed += number;
+                        number += 1;
                     }
+                    ProjTask.totalTimeUsed += number;
                     ProjTask.taskStatus = true;
                     bool check = await dynamicsService.UpdateTasks(ProjTask);
                     if (check)
