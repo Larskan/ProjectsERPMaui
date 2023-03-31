@@ -16,9 +16,9 @@ public static class MauiProgram
 			});
 
 		builder.Services.AddSingleton<LoginViewModel>();
-        builder.Services.AddTransient<StartViewModel>();
-        builder.Services.AddTransient<ProjectViewModel>();
-        builder.Services.AddTransient<TaskViewModel>();
+        builder.Services.AddSingleton<StartViewModel>();
+        builder.Services.AddSingleton<ProjectViewModel>();
+        builder.Services.AddSingleton<TaskViewModel>();
 
 		builder.Services.AddTransient<LoginView>();
         builder.Services.AddTransient<ProjectView>();

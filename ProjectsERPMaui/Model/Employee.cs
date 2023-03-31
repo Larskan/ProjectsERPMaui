@@ -10,11 +10,8 @@ namespace ProjectsERPMaui.Model
     public partial class Employee : ObservableObject
     {
         public int EmpID { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
         public bool Boolean { get; set; }
     }
 }

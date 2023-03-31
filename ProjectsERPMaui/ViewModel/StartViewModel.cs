@@ -17,7 +17,15 @@ namespace ProjectsERPMaui.ViewModel
     [QueryProperty(nameof(Empl), nameof(Empl))]
     public partial class StartViewModel : ObservableObject
     {
+<<<<<<< HEAD
         ObservableCollection<Project> Projects { get; set; } = new ObservableCollection<Project>();
+=======
+        //ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
+        ObservableCollection<Project> ProjList { get; set; } = new ObservableCollection<Project>();
+
+        [ObservableProperty]
+        List<Project> _projectsList;
+>>>>>>> cb653e410809fdb6e5a8d975266ae94fb3440d55
 
         DynamicsService dynamicsService;
 
@@ -30,8 +38,13 @@ namespace ProjectsERPMaui.ViewModel
         public StartViewModel()
         {
             Empl = new Employee();
+<<<<<<< HEAD
             Testdata();
+=======
+>>>>>>> cb653e410809fdb6e5a8d975266ae94fb3440d55
             dynamicsService = new DynamicsService();
+            ProjectsList = new List<Project>();
+            Testdata();
         }
 
         [RelayCommand]
@@ -39,7 +52,8 @@ namespace ProjectsERPMaui.ViewModel
         {
             try
             {
-                //Project = await dynamicsService.GetProjects(Empl.EmpID);
+                //ProjectsList = await dynamicsService.GetProjects(Employee.EmpID);
+                ProjList = new ObservableCollection<Project>(ProjectsList);
                 await GoToProjectPage();
             }
             catch (Exception ex)
@@ -53,41 +67,42 @@ namespace ProjectsERPMaui.ViewModel
             await Shell.Current.GoToAsync($"//Project",
                 new Dictionary<string, object>
                 {
-                    ["Projects"] = Projects
+                    ["ProjList"] = ProjList
                 });
         }
 
         private void Testdata()
         {
 
-            Projects.Add(new Project()
+            ProjectsList.Add(new Project()
             {
                 ProjectName = "Test1",
                 ProjectID = 1,
-                TotalTime = 100,
-                RemainingTime = 100,
+                TaskList = new List<ProjectTask> { new ProjectTask() { TaskName = "Task Test", PlanTime = 50, TimeUsed = 10, Description = "Hallo user", ProjectID = 1, TaskID = 1} },
             });
+<<<<<<< HEAD
             Projects.Add(new Project()
+=======
+            ProjectsList.Add(new Project()
+>>>>>>> cb653e410809fdb6e5a8d975266ae94fb3440d55
             {
                 ProjectName = "Test2",
                 ProjectID = 1,
-                TotalTime = 100,
-                RemainingTime = 100,
             });
-            Projects.Add(new Project()
+            ProjectsList.Add(new Project()
             {
                 ProjectName = "Test3",
                 ProjectID = 1,
-                TotalTime = 100,
-                RemainingTime = 100,
             });
-            Projects.Add(new Project()
+            ProjectsList.Add(new Project()
             {
                 ProjectName = "Test4",
                 ProjectID = 1,
-                TotalTime = 100,
-                RemainingTime = 100,
             });
+<<<<<<< HEAD
+=======
+
+>>>>>>> cb653e410809fdb6e5a8d975266ae94fb3440d55
         }
     }
 }
