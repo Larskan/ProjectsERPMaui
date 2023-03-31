@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using ProjectsERPMaui.Model;
 using System;
 using System.Collections.Generic;
@@ -17,5 +18,17 @@ namespace ProjectsERPMaui.ViewModel
         {
             ProjTask = new ProjectTask();
         }
+
+        [RelayCommand]
+        public void StartPomo() { }
+
+        [RelayCommand]
+        public void PausePomo() { }
+
+        [RelayCommand]
+        public void StopPomo() { }
+
+        [RelayCommand]
+        public void SendPomo() { }
     }
 }

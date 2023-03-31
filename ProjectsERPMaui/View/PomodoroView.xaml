@@ -51,10 +51,10 @@
                 Grid.Row="3">
                 <Label Style="{StaticResource EmpLabel}" Text="Hier will be the Timer"/>
             </VerticalStackLayout>
-            <ImageButton Source="play.png" Grid.Row="4" Grid.Column="0" WidthRequest="70"/>
-            <ImageButton Source="pause.png" Grid.Row="4" Grid.Column="1" WidthRequest="70"/>
-            <ImageButton Source="stop.png" Grid.Row="4" Grid.Column="2" WidthRequest="70"/>
-            <ImageButton Source="send.png" Grid.Row="4" Grid.Column="3" WidthRequest="70"/>
+            <ImageButton Source="play.png" Grid.Row="4" Grid.Column="0" WidthRequest="50"/>
+            <ImageButton Source="pause.png" Grid.Row="4" Grid.Column="1" WidthRequest="50"/>
+            <ImageButton Source="stop.png" Grid.Row="4" Grid.Column="2" WidthRequest="60"/>
+            <ImageButton Source="send.png" Grid.Row="4" Grid.Column="3" WidthRequest="50"/>
         </Grid>
     </Frame>
 </ContentPage>
