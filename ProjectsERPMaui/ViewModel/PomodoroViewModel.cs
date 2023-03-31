@@ -99,9 +99,10 @@ namespace ProjectsERPMaui.ViewModel
                     //bool check = await dynamicsService.UpdateTasks(ProjTask);
                     if (true)
                     {
-                        await Shell.Current.GoToAsync("//Start");
+                        isRunning = false;
                         time = new TimeOnly();
                         SetTime();
+                        await Shell.Current.GoToAsync("//Start");
                     }
                     else
                     {
