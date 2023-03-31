@@ -33,7 +33,6 @@ namespace ProjectsERPMaui.ViewModel
         {
             Empl= new Employee { EmpID = 1, FirstName = "Peter", LastName = "Karlson", Boolean = true};
             dynamicsService = new DynamicsService();
-            appShell = new AppShellViewModel();
         }
 
         [RelayCommand]
